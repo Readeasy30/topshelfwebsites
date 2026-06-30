@@ -1,10 +1,155 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Top Shelf Websites</title>
+  <title>TopShelf Websites</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #0f172a;
+      color: white;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .sub {
+      font-size: 18px;
+      color: #cbd5e1;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #38bdf8;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0ea5e9;
+    }
+
+    .pricing {
+      margin-top: 30px;
+      display: grid;
+      gap: 15px;
+    }
+
+    .price-box {
+      background: #111827;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    a.button {
+      display: block;
+      text-align: center;
+      padding: 12px;
+      background: #22c55e;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    pre {
+      background: #0b1220;
+      padding: 15px;
+      border-radius: 10px;
+      white-space: pre-wrap;
+      margin-top: 20px;
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Coming Soon</h1>
-    <p>topshelfwebsites.com</p>
+
+<div class="container">
+
+  <h1>We Build High-End Websites in 72 Hours</h1>
+  <div class="sub">Enter your info and get your instant website plan + pricing.</div>
+
+  <div class="card">
+    <form id="leadForm">
+
+      <input name="name" placeholder="Your Name" required>
+      <input name="email" placeholder="Email" required>
+      <input name="business" placeholder="Business Type" required>
+      <input name="goal" placeholder="Main Goal (more customers, bookings, sales)" required>
+
+      <button type="submit">Generate My Website Plan</button>
+
+    </form>
+
+    <pre id="output"></pre>
+  </div>
+
+  <div class="pricing">
+
+    <div class="price-box">
+      <h3>$199 Website Setup</h3>
+      <p>Done-for-you website built in 72 hours.</p>
+      <a class="button" href="YOUR_STRIPE_SETUP_LINK" target="_blank">Pay Now</a>
+    </div>
+
+    <div class="price-box">
+      <h3>$49/month Care Plan</h3>
+      <p>Hosting, updates, SEO, protection.</p>
+      <a class="button" href="YOUR_STRIPE_MONTHLY_LINK" target="_blank">Subscribe</a>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+document.getElementById("leadForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const data = Object.fromEntries(new FormData(e.target));
+
+  document.getElementById("output").innerText = "Generating your website plan...";
+
+  const res = await fetch("YOUR_CLOUDFLARE_WORKER_URL", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify(data)
+  });
+
+  const json = await res.json();
+
+  document.getElementById("output").innerText = json.result;
+});
+</script>
+
 </body>
 </html>
