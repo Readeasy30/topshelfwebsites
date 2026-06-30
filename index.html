@@ -4,163 +4,145 @@
   <title>TopShelf Websites</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
   <style>
     body {
       margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #0b0f1a;
-      color: #ffffff;
+      font-family: Arial, sans-serif;
+      background: #0b1220;
+      color: white;
     }
 
-    .hero {
-      padding: 90px 20px 60px;
-      text-align: center;
-      background: radial-gradient(circle at top, #1b2a4a, #0b0f1a);
+    .wrap {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
     }
 
     h1 {
-      font-size: 48px;
-      margin-bottom: 15px;
-      line-height: 1.1;
+      font-size: 44px;
+      margin-bottom: 10px;
     }
 
     .sub {
-      font-size: 18px;
       color: #cbd5e1;
-      max-width: 700px;
-      margin: auto;
+      margin-bottom: 30px;
+      font-size: 18px;
     }
 
-    .cta {
-      margin-top: 25px;
-      padding: 14px 26px;
-      background: #38bdf8;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .cta:hover {
-      background: #0ea5e9;
-    }
-
-    .section {
-      max-width: 1000px;
-      margin: auto;
-      padding: 60px 20px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
+    .box {
       background: #111827;
       padding: 20px;
-      border-radius: 14px;
-    }
-
-    .highlight {
-      color: #38bdf8;
-      font-weight: 600;
+      border-radius: 12px;
+      margin-top: 20px;
     }
 
     input {
       width: 100%;
       padding: 12px;
-      margin-top: 10px;
+      margin: 6px 0;
       border-radius: 8px;
       border: none;
     }
 
-    button.submit {
+    button {
       width: 100%;
       padding: 14px;
-      margin-top: 12px;
-      background: #22c55e;
+      background: #38bdf8;
       border: none;
       border-radius: 10px;
-      font-weight: 700;
+      font-weight: bold;
       cursor: pointer;
     }
 
-    pre {
-      background: #0a0f1f;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 20px;
-      white-space: pre-wrap;
+    button:hover {
+      background: #0ea5e9;
     }
 
-    footer {
-      text-align: center;
-      padding: 40px;
-      color: #64748b;
+    .section {
+      margin-top: 40px;
     }
+
+    .pricing {
+      display: grid;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .price {
+      background: #0f172a;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+    }
+
+    .cta {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .green {
+      background: #22c55e;
+      color: white;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      color: #e2e8f0;
+    }
+
   </style>
 </head>
 
 <body>
 
-<div class="hero">
-  <h1>Websites That Make You Look Premium.</h1>
-  <p class="sub">
-    We design and launch high-converting business websites in 72 hours.
-    Built for trust, speed, and real customers — not templates.
-  </p>
-</div>
+<div class="wrap">
 
-<div class="section">
-
-  <h2>What You Get</h2>
-
-  <div class="grid">
-    <div class="card">
-      <div class="highlight">72-Hour Delivery</div>
-      Fast launch, no waiting weeks.
-    </div>
-
-    <div class="card">
-      <div class="highlight">Premium Design</div>
-      Clean, modern, high-trust layouts.
-    </div>
-
-    <div class="card">
-      <div class="highlight">Conversion Focused</div>
-      Built to get calls, leads, and sales.
-    </div>
+  <h1>Websites That Make Your Business Look Premium</h1>
+  <div class="sub">
+    We design high-conversion business websites in 72 hours.
   </div>
 
-</div>
+  <div class="box">
 
-<div class="section">
-
-  <h2>Get Your Website Plan</h2>
-
-  <div class="card">
-
-    <input id="name" placeholder="Your Name">
+    <input id="name" placeholder="Name">
     <input id="email" placeholder="Email">
     <input id="business" placeholder="Business Type">
     <input id="goal" placeholder="Main Goal">
 
-    <button class="submit" onclick="send()">Generate My Website Plan</button>
+    <button onclick="send()">Generate Website Plan</button>
 
-    <pre id="output"></pre>
+    <div id="output" style="margin-top:20px;"></div>
+
+  </div>
+
+  <div class="section">
+
+    <h2>Simple Pricing</h2>
+
+    <div class="pricing">
+
+      <div class="price">
+        <h3>$199 Setup</h3>
+        <p>Custom website built in 72 hours.</p>
+        <a class="cta green" href="YOUR_STRIPE_SETUP_LINK">Buy Setup</a>
+      </div>
+
+      <div class="price">
+        <h3>$49/month Care Plan</h3>
+        <p>Hosting, updates, SEO, protection.</p>
+        <a class="cta green" href="YOUR_STRIPE_MONTHLY_LINK">Subscribe</a>
+      </div>
+
+    </div>
 
   </div>
 
 </div>
-
-<footer>
-  TopShelf Websites © 2026
-</footer>
 
 <script>
 async function send() {
@@ -172,7 +154,8 @@ async function send() {
     goal: document.getElementById("goal").value
   };
 
-  document.getElementById("output").innerText = "Generating your premium website plan...";
+  document.getElementById("output").innerHTML =
+    "<p style='color:#38bdf8'>Generating your website plan...</p>";
 
   const res = await fetch("YOUR_CLOUDFLARE_WORKER_URL", {
     method: "POST",
@@ -182,162 +165,13 @@ async function send() {
 
   const json = await res.json();
 
-  document.getElementById("output").innerText = json.result;
+  document.getElementById("output").innerHTML =
+    "<pre>" + json.headline + "\n\n" +
+    json.subheadline + "\n\n" +
+    json.services + "\n\n" +
+    json.pricing + "\n\n" +
+    json.cta + "</pre>";
 }
-</script>
-
-</body>
-</html><!DOCTYPE html>
-<html>
-<head>
-  <title>TopShelf Websites</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #0f172a;
-      color: white;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-
-    h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
-
-    .sub {
-      font-size: 18px;
-      color: #cbd5e1;
-      margin-bottom: 30px;
-    }
-
-    .card {
-      background: #1e293b;
-      padding: 20px;
-      border-radius: 12px;
-      margin-top: 20px;
-    }
-
-    input {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      border-radius: 8px;
-      border: none;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      background: #38bdf8;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #0ea5e9;
-    }
-
-    .pricing {
-      margin-top: 30px;
-      display: grid;
-      gap: 15px;
-    }
-
-    .price-box {
-      background: #111827;
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    a.button {
-      display: block;
-      text-align: center;
-      padding: 12px;
-      background: #22c55e;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      margin-top: 10px;
-    }
-
-    pre {
-      background: #0b1220;
-      padding: 15px;
-      border-radius: 10px;
-      white-space: pre-wrap;
-      margin-top: 20px;
-    }
-  </style>
-</head>
-
-<body>
-
-<div class="container">
-
-  <h1>We Build High-End Websites in 72 Hours</h1>
-  <div class="sub">Enter your info and get your instant website plan + pricing.</div>
-
-  <div class="card">
-    <form id="leadForm">
-
-      <input name="name" placeholder="Your Name" required>
-      <input name="email" placeholder="Email" required>
-      <input name="business" placeholder="Business Type" required>
-      <input name="goal" placeholder="Main Goal (more customers, bookings, sales)" required>
-
-      <button type="submit">Generate My Website Plan</button>
-
-    </form>
-
-    <pre id="output"></pre>
-  </div>
-
-  <div class="pricing">
-
-    <div class="price-box">
-      <h3>$199 Website Setup</h3>
-      <p>Done-for-you website built in 72 hours.</p>
-      <a class="button" href="YOUR_STRIPE_SETUP_LINK" target="_blank">Pay Now</a>
-    </div>
-
-    <div class="price-box">
-      <h3>$49/month Care Plan</h3>
-      <p>Hosting, updates, SEO, protection.</p>
-      <a class="button" href="YOUR_STRIPE_MONTHLY_LINK" target="_blank">Subscribe</a>
-    </div>
-
-  </div>
-
-</div>
-
-<script>
-document.getElementById("leadForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const data = Object.fromEntries(new FormData(e.target));
-
-  document.getElementById("output").innerText = "Generating your website plan...";
-
-  const res = await fetch("YOUR_CLOUDFLARE_WORKER_URL", {
-    method: "POST",
-    headers: {"Content-Type":"application/json"},
-    body: JSON.stringify(data)
-  });
-
-  const json = await res.json();
-
-  document.getElementById("output").innerText = json.result;
-});
 </script>
 
 </body>
