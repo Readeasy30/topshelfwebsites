@@ -116,6 +116,34 @@ function saveLead() {
     "Saved locally (safe backup). Will sync when system is live.";
 }
 </script>
+<script>
+async function startCheckout() {
+  document.getElementById("msg").innerText = "Redirecting to secure checkout...";
 
+  const data = {
+    businessName: document.getElementById("business").value,
+    email: document.getElementById("email").value,
+    industry: "website-order"
+  };
+
+  try {
+    const res = await fetch("/functions/create-checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+
+    const session = await res.json();
+
+    if (session.url) {
+      window.location.href = session.url;
+    } else {
+      document.getElementById("msg").innerText = "Checkout not ready yet (Phase 2 wiring in progress).";
+    }
+  } catch (e) {
+    document.getElementById("msg").innerText = "System ready — Stripe not connected yet.";
+  }
+}
+</script>
 </body>
 </html>
