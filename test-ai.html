@@ -1,1 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Generator Test</title>
+</head>
+<body>
 
+<h2>AI Website Generator</h2>
+
+<input id="name" placeholder="Business Name"><br><br>
+
+<select id="industry">
+  <option>Restaurant</option>
+  <option>Trades</option>
+  <option>Retail</option>
+  <option>Services</option>
+</select><br><br>
+
+<button onclick="run()">Generate</button>
+
+<pre id="out"></pre>
+
+<script src="ai-generator.js"></script>
+
+<script>
+function run() {
+  const data = {
+    businessName: document.getElementById("name").value,
+    industry: document.getElementById("industry").value
+  };
+
+  const result = generateWebsiteCopy(data);
+
+  document.getElementById("out").innerText =
+    JSON.stringify(result, null, 2);
+}
+</script>
+
+</body>
+</html>
