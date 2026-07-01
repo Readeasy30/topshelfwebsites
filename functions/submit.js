@@ -4,34 +4,25 @@ export async function onRequestPost(context) {
 
     const lead = {
       id: crypto.randomUUID(),
-      businessName: data.businessName || "",
-      email: data.email || "",
-      industry: data.industry || "",
-      goal: data.goal || "",
+      businessName: data.businessName,
+      email: data.email,
+      industry: data.industry,
       createdAt: new Date().toISOString()
     };
 
-    // TEMP STORAGE (safe fallback — works WITHOUT KV)
-    let leads = [];
+    // LOAD DATABASE
+    let leads = await context.env.LEADS.get("leads");
+    leads = leads ? JSON.parse(leads) : [];
 
-    try {
-      const file = await context.env?.LEADS?.get("leads");
-      if (file) leads = JSON.parse(file);
-    } catch (e) {
-      leads = [];
-    }
-
+    // ADD NEW LEAD
     leads.push(lead);
 
-    try {
-      await context.env?.LEADS?.put("leads", JSON.stringify(leads));
-    } catch (e) {
-      // KV not enabled yet → still works (no crash)
-    }
+    // SAVE DATABASE
+    await context.env.LEADS.put("leads", JSON.stringify(leads));
 
     return new Response(JSON.stringify({
       success: true,
-      leadId: lead.id
+      lead
     }), {
       headers: { "Content-Type": "application/json" }
     });
