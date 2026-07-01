@@ -3,39 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Top Shelf Websites | AI Business Websites in 72 Hours</title>
+<title>Top Shelf Websites | Under Construction</title>
 
 <style>
-body { font-family: Arial; margin:0; background:#f8fafc; }
-header { background:#0a192f; color:white; padding:20px; text-align:center; }
-.container { max-width:900px; margin:auto; padding:20px; }
-.card { background:white; padding:20px; margin:20px 0; border-radius:10px; }
-button { background:#bd1e24; color:white; padding:12px; border:none; width:100%; cursor:pointer; }
-input, select { width:100%; padding:10px; margin:8px 0; }
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #0a192f;
+  color: white;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.card {
+  background: white;
+  color: #0a192f;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+}
+
+button {
+  background: #bd1e24;
+  color: white;
+  padding: 12px;
+  border: none;
+  width: 100%;
+  font-size: 16px;
+}
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+}
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  background: gold;
+  color: black;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 </style>
-
 </head>
-<body>
 
-<header>
-  <h1>Top Shelf Websites</h1>
-  <p>AI-Powered Websites Delivered in 72 Hours</p>
-</header>
+<body>
 
 <div class="container">
 
+<div class="badge">UNDER CONSTRUCTION — SYSTEM SAVED</div>
+
+<h1>Top Shelf Websites</h1>
+<p>AI Website SaaS System (Phase Vault Backup)</p>
+
 <div class="card">
-  <h2>$199 Website Setup</h2>
+  <h2>What This System Will Do</h2>
   <ul>
-    <li>4-page business website</li>
-    <li>Mobile ready design</li>
-    <li>SEO optimized</li>
-    <li>Delivered in 72 hours</li>
+    <li>Build websites automatically for small businesses</li>
+    <li>Accept Stripe payments ($199 setup)</li>
+    <li>Generate AI website content</li>
+    <li>Store customers in database</li>
+    <li>Auto-deliver websites</li>
   </ul>
 </div>
 
 <div class="card">
-  <h2>Start Your Website</h2>
+  <h2>Lead Capture (Saved Locally)</h2>
 
   <input id="businessName" placeholder="Business Name">
   <input id="email" placeholder="Email">
@@ -46,35 +84,36 @@ input, select { width:100%; padding:10px; margin:8px 0; }
     <option>Services</option>
   </select>
 
-  <button onclick="submitLead()">Get Started</button>
+  <button onclick="saveLead()">Save Lead (Backup Mode)</button>
 
-  <div id="msg"></div>
+  <p id="msg"></p>
+</div>
+
+<div class="card">
+  <h2>System Status</h2>
+  <p>✔ UI Locked</p>
+  <p>✔ SaaS Architecture Saved</p>
+  <p>✔ Stripe Hook Ready (Not Active Yet)</p>
+  <p>✔ AI Generator Module Ready (Offline Mode)</p>
 </div>
 
 </div>
 
 <script>
-async function submitLead() {
-  const msg = document.getElementById("msg");
+function saveLead() {
+  const lead = {
+    businessName: document.getElementById("businessName").value,
+    email: document.getElementById("email").value,
+    industry: document.getElementById("industry").value,
+    time: new Date().toISOString()
+  };
 
-  const res = await fetch("/functions/submit", {
-    method:"POST",
-    headers:{ "Content-Type":"application/json" },
-    body: JSON.stringify({
-      businessName: document.getElementById("businessName").value,
-      email: document.getElementById("email").value,
-      industry: document.getElementById("industry").value
-    })
-  });
+  let leads = JSON.parse(localStorage.getItem("leads") || "[]");
+  leads.push(lead);
+  localStorage.setItem("leads", JSON.stringify(leads));
 
-  const data = await res.json();
-
-  if(data.success){
-    msg.innerHTML = "Success! Redirecting...";
-    window.location.href = "/success.html";
-  } else {
-    msg.innerHTML = "Error submitting form";
-  }
+  document.getElementById("msg").innerText =
+    "Saved locally (safe backup). Will sync when system is live.";
 }
 </script>
 
