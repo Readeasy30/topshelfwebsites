@@ -1,191 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>TopShelf Websites | Websites Built in 72 Hours</title>
-  <meta name="description" content="Professional business websites built in 72 hours. $199 setup + $49/month care plan. Fast, mobile-ready, SEO-friendly.">
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b1220;
-      color: white;
-    }
-
-    .wrap {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-
-    h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
-      line-height: 1.1;
-    }
-
-    .sub {
-      color: #cbd5e1;
-      font-size: 18px;
-      margin-bottom: 25px;
-    }
-
-    .cta {
-      display: inline-block;
-      background: #22c55e;
-      color: white;
-      padding: 14px 18px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      margin: 8px 8px 0 0;
-    }
-
-    .cta2 {
-      background: #38bdf8;
-    }
-
-    .section {
-      margin-top: 40px;
-    }
-
-    .card {
-      background: #111827;
-      padding: 20px;
-      border-radius: 12px;
-      margin-top: 15px;
-    }
-
-    ul {
-      padding-left: 18px;
-      color: #cbd5e1;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      border-radius: 8px;
-      border: none;
-      box-sizing: border-box;
-    }
-
-    button {
-      margin-top: 15px;
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 10px;
-      background: #22c55e;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #16a34a;
-    }
-
-    .msg {
-      margin-top: 15px;
-      color: #22c55e;
-      font-weight: bold;
-    }
-
-    .trust {
-      color: #cbd5e1;
-      font-size: 14px;
-      margin-top: 10px;
-    }
-  </style>
-</head>
-
-<body>
-
-<div class="wrap">
-
-  <h1>We Build Professional Business Websites in 72 Hours</h1>
-
-  <div class="sub">
-    Simple, fast websites that bring you real customers — starting at $199.
-  </div>
-
-  <a class="cta" href="#form">Start My Website — $199</a>
-  <a class="cta cta2" href="#form">Website Care Plan — $49/mo</a>
-
-  <div class="trust">
-    ✔ Built in 72 hours<br>
-    ✔ Mobile-friendly design<br>
-    ✔ SEO-ready setup<br>
-    ✔ Simple monthly care option
-  </div>
-
-  <div class="section">
-
-    <div class="card">
-      <strong>What You Get</strong>
-      <ul>
-        <li>Modern mobile-ready website</li>
-        <li>SEO-friendly structure</li>
-        <li>Contact form included</li>
-        <li>Fast turnaround delivery</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <strong>How It Works</strong>
-      <ul>
-        <li>1. Submit your details</li>
-        <li>2. We design your website</li>
-        <li>3. You review it</li>
-        <li>4. We launch in 72 hours</li>
-      </ul>
-    </div>
-
-  </div>
-
-  <div class="section" id="form">
-
-    <div class="card">
-      <h3>Get Started</h3>
-
-      <input id="name" placeholder="Your Name">
-      <input id="email" placeholder="Email">
-      <input id="business" placeholder="Business Type">
-      <textarea id="goal" placeholder="What do you want your website to achieve?"></textarea>
-
-      <button onclick="submitForm()">Submit Request</button>
-
-      <div id="msg"></div>
-    </div>
-
-  </div>
-
+<div class="card">
+  <h2>Start My Website — $199</h2>
+  <p>Website Care Plan — $49/mo</p>
 </div>
 
-<script>
-function submitForm() {
-  const name = document.getElementById("name").value;
+<div class="card">
+  <strong>What You Get</strong>
+  <ul>
+    <li>Modern mobile-ready website</li>
+    <li>SEO-friendly structure</li>
+    <li>Contact form included</li>
+    <li>Fast turnaround delivery</li>
+  </ul>
+</div>
 
-  document.getElementById("msg").innerHTML =
-    "Thanks " + name + ". We received your request and will contact you within 24 hours.";
+<div class="card">
+  <strong>How It Works</strong>
+  <ul>
+    <li>1. Submit your details</li>
+    <li>2. We design your website</li>
+    <li>3. You review it</li>
+    <li>4. We launch in 72 hours</li>
+  </ul>
+</div>
 
-  window.TOP_SHELF_AI = {
-    intake: {
-      name,
-      email: document.getElementById("email").value,
-      business: document.getElementById("business").value,
-      goal: document.getElementById("goal").value
-    },
-    status: "queued"
-  };
+<div class="card">
+  <h3>Get Started</h3>
 
-  console.log("Lead captured:", window.TOP_SHELF_AI);
-}
-</script>
+  <input id="name" placeholder="Your Name" style="width:100%; padding:10px; margin:6px 0;">
+  <input id="email" placeholder="Email" style="width:100%; padding:10px; margin:6px 0;">
+  <input id="business" placeholder="Business Type" style="width:100%; padding:10px; margin:6px 0;">
+  <textarea id="goal" placeholder="What do you want your website to achieve?"
+    style="width:100%; padding:10px; margin:6px 0; height:100px;"></textarea>
 
-</body>
-</html>
+  <button onclick="submitForm()"
+    style="width:100%; padding:12px; background:#bd1e24; color:white; border:none;">
+    Submit Request
+  </button>
+
+  <div id="msg" style="margin-top:10px;"></div>
+</div>
