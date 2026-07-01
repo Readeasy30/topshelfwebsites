@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>TopShelf Websites | Built in 72 Hours</title>
-  <meta name="description" content="Get a professional website built in 72 hours. Simple, fast, mobile-ready.">
+  <title>TopShelf Websites | Websites Built in 72 Hours</title>
+  <meta name="description" content="Professional business websites built in 72 hours. $199 setup + $49/month care plan. Fast, mobile-ready, SEO-friendly.">
 
   <style>
     body {
@@ -24,6 +24,7 @@
     h1 {
       font-size: 42px;
       margin-bottom: 10px;
+      line-height: 1.1;
     }
 
     .sub {
@@ -40,8 +41,7 @@
       border-radius: 10px;
       text-decoration: none;
       font-weight: bold;
-      margin-top: 10px;
-      cursor: pointer;
+      margin: 8px 8px 0 0;
     }
 
     .cta2 {
@@ -59,12 +59,18 @@
       margin-top: 15px;
     }
 
+    ul {
+      padding-left: 18px;
+      color: #cbd5e1;
+    }
+
     input, textarea {
       width: 100%;
       padding: 12px;
       margin-top: 10px;
       border-radius: 8px;
       border: none;
+      box-sizing: border-box;
     }
 
     button {
@@ -86,17 +92,13 @@
     .msg {
       margin-top: 15px;
       color: #22c55e;
+      font-weight: bold;
     }
 
-    ul {
-      padding-left: 18px;
+    .trust {
       color: #cbd5e1;
-    }
-
-    .small {
-      color: #94a3b8;
-      font-size: 13px;
-      margin-top: 20px;
+      font-size: 14px;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -105,34 +107,41 @@
 
 <div class="wrap">
 
-  <h1>Professional Websites Built in 72 Hours</h1>
+  <h1>We Build Professional Business Websites in 72 Hours</h1>
 
   <div class="sub">
-    Simple websites for real businesses. Fast, clean, and built to get customers.
+    Simple, fast websites that bring you real customers — starting at $199.
   </div>
 
   <a class="cta" href="#form">Start My Website — $199</a>
   <a class="cta cta2" href="#form">Website Care Plan — $49/mo</a>
 
+  <div class="trust">
+    ✔ Built in 72 hours<br>
+    ✔ Mobile-friendly design<br>
+    ✔ SEO-ready setup<br>
+    ✔ Simple monthly care option
+  </div>
+
   <div class="section">
 
     <div class="card">
-      <strong>What you get</strong>
+      <strong>What You Get</strong>
       <ul>
-        <li>Mobile-friendly website</li>
-        <li>SEO-ready structure</li>
-        <li>Contact form</li>
-        <li>Fast 72-hour delivery</li>
+        <li>Modern mobile-ready website</li>
+        <li>SEO-friendly structure</li>
+        <li>Contact form included</li>
+        <li>Fast turnaround delivery</li>
       </ul>
     </div>
 
     <div class="card">
-      <strong>How it works</strong>
+      <strong>How It Works</strong>
       <ul>
-        <li>1. Submit your info</li>
-        <li>2. We design your site</li>
-        <li>3. Review it</li>
-        <li>4. Go live in 72 hours</li>
+        <li>1. Submit your details</li>
+        <li>2. We design your website</li>
+        <li>3. You review it</li>
+        <li>4. We launch in 72 hours</li>
       </ul>
     </div>
 
@@ -141,7 +150,7 @@
   <div class="section" id="form">
 
     <div class="card">
-      <h3>Get Started Today</h3>
+      <h3>Get Started</h3>
 
       <input id="name" placeholder="Your Name">
       <input id="email" placeholder="Email">
@@ -155,10 +164,6 @@
 
   </div>
 
-  <div class="small">
-    TopShelf Websites — Simple, fast, effective business websites.
-  </div>
-
 </div>
 
 <script>
@@ -166,7 +171,19 @@ function submitForm() {
   const name = document.getElementById("name").value;
 
   document.getElementById("msg").innerHTML =
-    "Thanks " + name + "! We received your request and will contact you soon.";
+    "Thanks " + name + ". We received your request and will contact you within 24 hours.";
+
+  window.TOP_SHELF_AI = {
+    intake: {
+      name,
+      email: document.getElementById("email").value,
+      business: document.getElementById("business").value,
+      goal: document.getElementById("goal").value
+    },
+    status: "queued"
+  };
+
+  console.log("Lead captured:", window.TOP_SHELF_AI);
 }
 </script>
 
