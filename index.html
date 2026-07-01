@@ -1,4 +1,14 @@
-   body {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TopShelf Websites | Built in 72 Hours</title>
+  <meta name="description" content="Get a professional website built in 72 hours. Simple, fast, mobile-ready.">
+
+  <style>
+    body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #0b1220;
@@ -31,6 +41,7 @@
       text-decoration: none;
       font-weight: bold;
       margin-top: 10px;
+      cursor: pointer;
     }
 
     .cta2 {
@@ -48,9 +59,33 @@
       margin-top: 15px;
     }
 
-    .price {
-      font-size: 24px;
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #22c55e;
+      color: white;
       font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #16a34a;
+    }
+
+    .msg {
+      margin-top: 15px;
+      color: #22c55e;
     }
 
     ul {
@@ -60,7 +95,8 @@
 
     .small {
       color: #94a3b8;
-      font-size: 14px;
+      font-size: 13px;
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -72,55 +108,67 @@
   <h1>Professional Websites Built in 72 Hours</h1>
 
   <div class="sub">
-    Done-for-you websites for small businesses. Fast, simple, and ready to get customers.
+    Simple websites for real businesses. Fast, clean, and built to get customers.
   </div>
 
-  <a class="cta" href="YOUR_STRIPE_SETUP_LINK">Start My Website — $199</a>
-  <a class="cta cta2" href="YOUR_STRIPE_MONTHLY_LINK">Website Care — $49/mo</a>
+  <a class="cta" href="#form">Start My Website — $199</a>
+  <a class="cta cta2" href="#form">Website Care Plan — $49/mo</a>
 
   <div class="section">
 
     <div class="card">
-      <div class="price">$199 Setup</div>
-      <p>We design, build, and launch your website in 72 hours.</p>
+      <strong>What you get</strong>
       <ul>
-        <li>Mobile-friendly design</li>
+        <li>Mobile-friendly website</li>
         <li>SEO-ready structure</li>
-        <li>Contact form included</li>
-        <li>Fast turnaround</li>
+        <li>Contact form</li>
+        <li>Fast 72-hour delivery</li>
       </ul>
     </div>
 
-    <div class="card">
-      <div class="price">$49/month Care Plan</div>
-      <p>We keep your website running and optimized.</p>
-      <ul>
-        <li>Hosting support</li>
-        <li>Basic SEO updates</li>
-        <li>Security monitoring</li>
-        <li>Small content edits</li>
-      </ul>
-    </div>
-
-  </div>
-
-  <div class="section">
     <div class="card">
       <strong>How it works</strong>
       <ul>
-        <li>1. Choose your plan</li>
-        <li>2. Complete short intake form</li>
-        <li>3. We build your website</li>
-        <li>4. You go live in 72 hours</li>
+        <li>1. Submit your info</li>
+        <li>2. We design your site</li>
+        <li>3. Review it</li>
+        <li>4. Go live in 72 hours</li>
       </ul>
     </div>
+
   </div>
 
-  <p class="small">
-    TopShelf Websites — Simple, fast websites for real businesses.
-  </p>
+  <div class="section" id="form">
+
+    <div class="card">
+      <h3>Get Started Today</h3>
+
+      <input id="name" placeholder="Your Name">
+      <input id="email" placeholder="Email">
+      <input id="business" placeholder="Business Type">
+      <textarea id="goal" placeholder="What do you want your website to achieve?"></textarea>
+
+      <button onclick="submitForm()">Submit Request</button>
+
+      <div id="msg"></div>
+    </div>
+
+  </div>
+
+  <div class="small">
+    TopShelf Websites — Simple, fast, effective business websites.
+  </div>
 
 </div>
+
+<script>
+function submitForm() {
+  const name = document.getElementById("name").value;
+
+  document.getElementById("msg").innerHTML =
+    "Thanks " + name + "! We received your request and will contact you soon.";
+}
+</script>
 
 </body>
 </html>
