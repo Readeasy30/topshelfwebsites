@@ -121,13 +121,13 @@ async function startCheckout() {
   document.getElementById("msg").innerText = "Redirecting to secure checkout...";
 
   const data = {
-    businessName: document.getElementById("business").value,
+    businessName: document.getElementById("businessName").value,
     email: document.getElementById("email").value,
     industry: "website-order"
   };
 
   try {
-    const res = await fetch("/functions/create-checkout", {
+    const res = await fetch("/create-checkout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
