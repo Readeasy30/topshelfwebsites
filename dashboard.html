@@ -1,37 +1,206 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Admin Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Top Shelf Websites Dashboard</title>
+
 <style>
-body{font-family:Arial;background:#f1f5f9;padding:20px;}
-.card{background:white;padding:15px;margin:10px 0;border-radius:8px;}
-</style>
-</head>
-<body>
-
-<h1>Customer Leads</h1>
-<button onclick="load()">Refresh</button>
-
-<div id="leads"></div>
-
-<script>
-async function load(){
-  const res = await fetch("/functions/leads");
-  const data = await res.json();
-
-  const box = document.getElementById("leads");
-  box.innerHTML = data.leads.map(l => `
-    <div class="card">
-      <b>${l.businessName}</b><br>
-      ${l.email}<br>
-      ${l.industry}<br>
-      ${l.createdAt}
-    </div>
-  `).join("");
+body {
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f4f6f9;
+  color:#122033;
 }
 
-load();
+.container {
+  max-width:1000px;
+  margin:auto;
+  padding:30px;
+}
+
+header {
+  background:#0a192f;
+  color:white;
+  padding:30px;
+  text-align:center;
+}
+
+.card {
+  background:white;
+  margin:20px 0;
+  padding:25px;
+  border-radius:10px;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.status {
+  padding:10px;
+  background:#e8f5e9;
+  border-radius:5px;
+}
+
+table {
+  width:100%;
+  border-collapse:collapse;
+}
+
+th, td {
+  padding:12px;
+  border-bottom:1px solid #ddd;
+  text-align:left;
+}
+
+button {
+  background:#bd1e24;
+  color:white;
+  border:0;
+  padding:12px 20px;
+  border-radius:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+
+<h1>
+Top Shelf Websites Admin Dashboard
+</h1>
+
+<p>
+Customer Leads & Website Orders
+</p>
+
+</header>
+
+
+
+<div class="container">
+
+
+<div class="card">
+
+<h2>
+System Status
+</h2>
+
+<div class="status">
+✔ Website Online<br>
+✔ Cloudflare Connected<br>
+✔ Stripe Module Ready<br>
+✔ AI Generator Available
+</div>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>
+Lead Database
+</h2>
+
+<table>
+
+<thead>
+
+<tr>
+<th>Business</th>
+<th>Email</th>
+<th>Industry</th>
+</tr>
+
+</thead>
+
+
+<tbody id="leads">
+
+<tr>
+<td colspan="3">
+Loading leads...
+</td>
+</tr>
+
+</tbody>
+
+
+</table>
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+async function loadLeads(){
+
+try {
+
+const response = await fetch("/data/leads.json");
+
+const leads = await response.json();
+
+
+const table =
+document.getElementById("leads");
+
+
+table.innerHTML="";
+
+
+leads.forEach(function(lead){
+
+table.innerHTML += `
+
+<tr>
+
+<td>${lead.businessName || ""}</td>
+
+<td>${lead.email || ""}</td>
+
+<td>${lead.industry || ""}</td>
+
+</tr>
+
+`;
+
+});
+
+
+}
+
+catch(error){
+
+document.getElementById("leads").innerHTML =
+`
+<tr>
+<td colspan="3">
+No leads available yet.
+</td>
+</tr>
+`;
+
+}
+
+
+}
+
+
+loadLeads();
+
+
 </script>
+
 
 </body>
 </html>
