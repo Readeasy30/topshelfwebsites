@@ -4,29 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Top Shelf Websites | Business Websites in 72 Hours</title>
-<meta name="description" content="Get a professional business website in 72 hours. $199 setup plus $49/month website care plan.">
+<meta name="description" content="Get a high-converting business website in 72 hours. $199 setup plus $49/month website care plan.">
+<meta property="og:title" content="Top Shelf Websites | Business Websites in 72 Hours">
+<meta property="og:description" content="Professional websites for local businesses with a simple $199 setup and $49/month care plan.">
+<meta property="og:url" content="https://topshelfwebsites.com/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Top Shelf Websites">
+<meta name="twitter:description" content="Launch your business website in 72 hours.">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"LocalBusiness","name":"Top Shelf Websites","description":"Professional business websites delivered in 72 hours."}
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Top Shelf Websites","url":"https://topshelfwebsites.com","description":"Professional business websites delivered in 72 hours.","offers":{"@type":"Offer","price":"199","priceCurrency":"USD"}}
 </script>
 <style>
-body{font-family:Arial,sans-serif;margin:0;background:#081b33;color:#fff}main{max-width:1000px;margin:auto;padding:30px 20px}.card{background:#fff;color:#111;padding:25px;margin:20px 0;border-radius:12px}button{background:#b91c1c;color:white;border:0;padding:14px;width:100%;font-size:18px}input,select{width:100%;padding:12px;margin:6px 0}.price{font-size:28px;font-weight:bold;color:#b91c1c}.grid{display:grid;gap:20px}
+body{font-family:Arial,sans-serif;margin:0;background:#081b33;color:#fff}main{max-width:1000px;margin:auto;padding:30px 20px}.card{background:#fff;color:#111;padding:25px;margin:20px 0;border-radius:12px}button{background:#b91c1c;color:white;border:0;padding:14px;width:100%;font-size:18px}input,select{width:100%;padding:12px;margin:6px 0}.price{font-size:28px;font-weight:bold;color:#b91c1c}.grid{display:grid;gap:20px}a{color:#fff}
 </style>
 </head>
 <body>
 <main>
 <h1>Top Shelf Websites</h1>
+<nav><a href="process.html">Process</a> | <a href="care-plan.html">Care Plan</a> | <a href="order.html">Order</a></nav>
 <h2>Get a High-Converting Business Website in 72 Hours</h2>
 <p>Modern websites for local businesses without the long wait.</p>
 <div class="card"><h2>America 250 Special</h2><p class="price">$199 Setup</p><p>Plus Website Care Plan: $49/month</p></div>
 <div class="grid">
 <div class="card"><h2>4-Page Website Package</h2><ul><li>Home page</li><li>Process and portfolio</li><li>Care plan</li><li>Order and onboarding</li><li>Mobile-first design</li><li>Local SEO foundation</li></ul></div>
-<div class="card"><h2>Simple Process</h2><ol><li>Submit business information</li><li>Website created</li><li>Review and launch</li></ol></div>
-<div class="card"><h2>Website Care Plan</h2><p>Hosting support, monitoring, maintenance, and technical health.</p></div>
 <div class="card"><h2>Start Your Website</h2><input id="business" placeholder="Business name"><input id="email" placeholder="Email"><select id="industry"><option>Restaurant</option><option>Trades</option><option>Retail</option><option>Services</option></select><button onclick="submitLead()">Launch My Website — $199</button><p id="msg"></p></div>
 </div>
 </main>
 <script>
-function submitLead(){const lead={business:business.value,email:email.value,industry:industry.value,time:new Date().toISOString()};localStorage.setItem('lead',JSON.stringify(lead));msg.textContent='Information saved. Next step: website onboarding.';}
+async function submitLead(){const lead={businessName:business.value,email:email.value,industry:industry.value};const response=await fetch('/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(lead)});const data=await response.json();msg.textContent=data.success?'Lead saved. Continue to onboarding.':'Error saving lead.';}
 </script>
 </body>
 </html>
