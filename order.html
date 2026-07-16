@@ -1,1 +1,27 @@
-<!doctype html><html><head><title>Order Your Website | Top Shelf Websites</title><meta name="description" content="Order your $199 business website package."></head><body><h1>Launch Your Website</h1><p>$199 setup + $49/month care plan</p><form><input placeholder="Business name"><input placeholder="Email"><input placeholder="Business type"><button>Submit</button></form></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<title>Order Your Website | Top Shelf Websites</title>
+<meta name="description" content="Order your $199 Top Shelf Websites business website package.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<h1>Launch Your Website</h1>
+<p>$199 setup + $49/month care plan</p>
+<form id="orderForm">
+<input id="businessName" placeholder="Business name" required>
+<input id="email" type="email" placeholder="Email" required>
+<input id="industry" placeholder="Business type">
+<button type="submit">Continue to Checkout</button>
+</form>
+<p id="message"></p>
+<script>
+document.getElementById('orderForm').addEventListener('submit', async (event)=>{
+ event.preventDefault();
+ const response = await fetch('/create-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({businessName:businessName.value,email:email.value,industry:industry.value})});
+ const data = await response.json();
+ if(data.url){window.location.href=data.url;}else{message.textContent=data.message || data.error || 'Checkout unavailable';}
+});
+</script>
+</body>
+</html>
