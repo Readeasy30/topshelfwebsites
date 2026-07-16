@@ -3,119 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Top Shelf Websites | Under Construction</title>
-
+<title>Top Shelf Websites | Business Websites in 72 Hours</title>
+<meta name="description" content="Get a professional business website in 72 hours. $199 setup plus $49/month website care plan.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Top Shelf Websites","description":"Professional business websites delivered in 72 hours."}
+</script>
 <style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #0a192f;
-  color: white;
-}
-
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.card {
-  background: white;
-  color: #0a192f;
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 10px;
-}
-
-button {
-  background: #bd1e24;
-  color: white;
-  padding: 12px;
-  border: none;
-  width: 100%;
-  font-size: 16px;
-}
-input, select {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-}
-.badge {
-  display: inline-block;
-  padding: 6px 12px;
-  background: gold;
-  color: black;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
+body{font-family:Arial,sans-serif;margin:0;background:#081b33;color:#fff}main{max-width:1000px;margin:auto;padding:30px 20px}.card{background:#fff;color:#111;padding:25px;margin:20px 0;border-radius:12px}button{background:#b91c1c;color:white;border:0;padding:14px;width:100%;font-size:18px}input,select{width:100%;padding:12px;margin:6px 0}.price{font-size:28px;font-weight:bold;color:#b91c1c}.grid{display:grid;gap:20px}
 </style>
 </head>
-
 <body>
-
-<div class="container">
-
-<div class="badge">UNDER CONSTRUCTION — SYSTEM SAVED</div>
-
+<main>
 <h1>Top Shelf Websites</h1>
-<p>AI Website SaaS System (Phase Vault Backup)</p>
-
-<div class="card">
-  <h2>What This System Will Do</h2>
-  <ul>
-    <li>Build websites automatically for small businesses</li>
-    <li>Accept Stripe payments ($199 setup)</li>
-    <li>Generate AI website content</li>
-    <li>Store customers in database</li>
-    <li>Auto-deliver websites</li>
-  </ul>
+<h2>Get a High-Converting Business Website in 72 Hours</h2>
+<p>Modern websites for local businesses without the long wait.</p>
+<div class="card"><h2>America 250 Special</h2><p class="price">$199 Setup</p><p>Plus Website Care Plan: $49/month</p></div>
+<div class="grid">
+<div class="card"><h2>4-Page Website Package</h2><ul><li>Home page</li><li>Process and portfolio</li><li>Care plan</li><li>Order and onboarding</li><li>Mobile-first design</li><li>Local SEO foundation</li></ul></div>
+<div class="card"><h2>Simple Process</h2><ol><li>Submit business information</li><li>Website created</li><li>Review and launch</li></ol></div>
+<div class="card"><h2>Website Care Plan</h2><p>Hosting support, monitoring, maintenance, and technical health.</p></div>
+<div class="card"><h2>Start Your Website</h2><input id="business" placeholder="Business name"><input id="email" placeholder="Email"><select id="industry"><option>Restaurant</option><option>Trades</option><option>Retail</option><option>Services</option></select><button onclick="submitLead()">Launch My Website — $199</button><p id="msg"></p></div>
 </div>
-
-<div class="card">
-  <h2>Lead Capture (Saved Locally)</h2>
-
-  <input id="businessName" placeholder="Business Name">
-  <input id="email" placeholder="Email">
-  <select id="industry">
-    <option>Restaurant</option>
-    <option>Trades</option>
-    <option>Retail</option>
-    <option>Services</option>
-  </select>
-
-  <button onclick="saveLead()">Save Lead (Backup Mode)</button>
-
-  <p id="msg"></p>
-</div>
-
-<div class="card">
-  <h2>System Status</h2>
-  <p>✔ UI Locked</p>
-  <p>✔ SaaS Architecture Saved</p>
-  <p>✔ Stripe Hook Ready (Not Active Yet)</p>
-  <p>✔ AI Generator Module Ready (Offline Mode)</p>
-</div>
-
-</div>
-
+</main>
 <script>
-function saveLead() {
-  const lead = {
-    businessName: document.getElementById("businessName").value,
-    email: document.getElementById("email").value,
-    industry: document.getElementById("industry").value,
-    time: new Date().toISOString()
-  };
-
-  let leads = JSON.parse(localStorage.getItem("leads") || "[]");
-  leads.push(lead);
-  localStorage.setItem("leads", JSON.stringify(leads));
-
-  document.getElementById("msg").innerText =
-    "Saved locally (safe backup). Will sync when system is live.";
-}
+function submitLead(){const lead={business:business.value,email:email.value,industry:industry.value,time:new Date().toISOString()};localStorage.setItem('lead',JSON.stringify(lead));msg.textContent='Information saved. Next step: website onboarding.';}
 </script>
-
 </body>
 </html>
