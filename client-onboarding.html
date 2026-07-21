@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Shelf Websites Client Onboarding</title>
+<style>
+body{font-family:system-ui,sans-serif;background:#f8fafc;color:#334155}.container{max-width:700px;margin:40px auto;padding:20px}.form-box{background:#fff;padding:30px;border-radius:12px;box-shadow:0 5px 20px #0001}.form-group{margin-bottom:20px}label{display:block;font-weight:700;margin-bottom:6px}input,textarea{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:6px}button{background:#2563eb;color:white;padding:14px 20px;border:0;border-radius:6px;font-weight:700}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="form-box">
+<h2>Let's Build Your Site</h2>
+<p>Complete this layout map to populate your operational live system.</p>
+<form id="ingestion-form">
+<input type="hidden" id="site-id" value="PASTE_ASSIGNED_SITE_UUID_HERE">
+<div class="form-group"><label>Main Hero Headline</label><input id="hero-title" maxlength="60" required></div>
+<div class="form-group"><label>Sub-Headline</label><textarea id="hero-subtitle" maxlength="160" required></textarea></div>
+<div class="form-group"><label>Service Card 1 Name</label><input id="service-one-title" maxlength="25" required></div>
+<div class="form-group"><label>Service Card 1 Description</label><textarea id="service-one-desc" maxlength="200" required></textarea></div>
+<button type="submit">Transmit Core Copy Matrix</button>
+</form>
+</div>
+</div>
+<script>
+document.getElementById('ingestion-form').addEventListener('submit',async(e)=>{
+e.preventDefault();
+const siteId=document.getElementById('site-id').value;
+const payload=[
+{site_id:siteId,section_name:'hero',content_key:'headline',content_value:document.getElementById('hero-title').value},
+{site_id:siteId,section_name:'hero',content_key:'subheadline',content_value:document.getElementById('hero-subtitle').value},
+{site_id:siteId,section_name:'services',content_key:'s1_title',content_value:document.getElementById('service-one-title').value},
+{site_id:siteId,section_name:'services',content_key:'s1_desc',content_value:document.getElementById('service-one-desc').value}
+];
+alert('Content matrix ready for Supabase pipeline.');
+console.log(payload);
+});
+</script>
+</body>
+</html>
