@@ -1,0 +1,45 @@
+name: Automated Client Provisioning & Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  provision_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Cloudflare Pages
+        id: cf_deploy
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ github.event.repository.name }}
+          directory: ./dist
+
+      - name: Attach Client Domain
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/pages/projects/${{ github.event.repository.name }}/domains" \
+          -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          --data '{"name":"${{ secrets.CLIENT_CUSTOM_DOMAIN }}"}'
+
+      - name: Update Supabase Inventory
+        run: |
+          curl -X POST "${{ secrets.SUPABASE_URL }}/rest/v1/client_sites?on_conflict=domain_name" \
+          -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+          -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
+          -H "Content-Type: application/json" \
+          -H "Prefer: resolution=merge" \
+          --data '{
+            "domain_name":"${{ secrets.CLIENT_CUSTOM_DOMAIN }}",
+            "github_repo_url":"${{ github.event.repository.html_url }}",
+            "cloudflare_project_id":"${{ github.event.repository.name }}",
+            "deployment_status":"active",
+            "launched_at":"'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"
+          }'
