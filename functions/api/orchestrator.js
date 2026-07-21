@@ -1,8 +1,12 @@
 // TopShelfWebsites Automation Orchestrator
 // Cloudflare Pages Function
-// Phase 1: command API foundation
+// Production Phase 2 command control layer
 
 let pendingCommands = [];
+let agentStatus = {
+  status: "WORKING",
+  lastHeartbeat: null
+};
 
 const allowedActions = [
   "build_site",
@@ -40,12 +44,16 @@ export async function onRequest(context) {
       const command = {
         id: crypto.randomUUID(),
         action: payload.action,
-        timestamp: new Date().toISOString(),
-        status: "queued"
+        payload: payload.payload || {},
+        created: new Date().toISOString(),
+        status: "QUEUED"
       };
 
       pendingCommands.push(command);
-      if (pendingCommands.length > 20) pendingCommands.shift();
+
+      if (pendingCommands.length > 20) {
+        pendingCommands.shift();
+      }
 
       return new Response(JSON.stringify(command), {
         status: 202,
@@ -72,12 +80,32 @@ export async function onRequest(context) {
     const jobs = [...pendingCommands];
     pendingCommands = [];
 
-    return new Response(JSON.stringify({ jobs }), {
+    return new Response(JSON.stringify({
+      status: "WORKING",
+      jobs
+    }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" }
     });
   }
 
-  return new Response("TopShelfWebsites Automation Node Active", {
+  if (url.pathname.endsWith("/heartbeat") && request.method === "POST") {
+    agentStatus = {
+      status: "WORKING",
+      lastHeartbeat: new Date().toISOString()
+    };
+
+    return new Response(JSON.stringify(agentStatus), {
+      headers: { ...corsHeaders, "Content-Type": "application/json" }
+    });
+  }
+
+  if (url.pathname.endsWith("/status") && request.method === "GET") {
+    return new Response(JSON.stringify(agentStatus), {
+      headers: { ...corsHeaders, "Content-Type": "application/json" }
+    });
+  }
+
+  return new Response("TopShelfWebsites Automation Node WORKING", {
     headers: corsHeaders
   });
 }
