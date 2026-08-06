@@ -1,0 +1,6 @@
+﻿
+# Gemini 3.6 Flash Active Channels Setup
+MODEL_ID="gemini-3.6-flash"
+MODEL_MAX_TOKENS=1048576
+MODEL_PROVIDER="gemini"
+MODEL_FEATURES="chat,streaming,reasoning"
