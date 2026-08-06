@@ -1,46 +1,22 @@
-﻿name: 24/7 Remote OmniRoute Automation
+﻿name: Deploy Top Shelf Websites
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Repository Code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy to Remote 24/7 Host via SSH
-        uses: appleboy/ssh-action@v1.0.3
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
         with:
-          host: ${{ secrets.REMOTE_HOST_IP }}
-          username: ${{ secrets.REMOTE_SSH_USER }}
-          key: ${{ secrets.REMOTE_SSH_KEY }}
-          script: |
-            cd ~/omniroute-service
-            git pull origin main
-            npm install --omit=dev
-            export OPENAI_API_KEY="${{ secrets.OPENAI_API_KEY }}"
-            export ANTHROPIC_API_KEY="${{ secrets.ANTHROPIC_API_KEY }}"
-            export OMNIROUTE_NO_AUTH="true"
-            pm2 restart omniroute --update-env
-
-      - name: Send Email Alert on Deployment Failure
-        if: failure()
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: ://gmail.com
-          server_port: 465
-          username: ${{ secrets.ALERT_EMAIL_USER }}
-          password: ${{ secrets.ALERT_EMAIL_PASSWORD }}
-          subject: "🚨 CRITICAL: OmniRoute 24/7 Deployment Failed"
-          to: Wholelychit@gmail.com
-          from: OmniRoute Automation Guard
-          body: |
-            The 24/7 OmniRoute pipeline update failed during runtime compilation or host routing deployment.
-            
-            Repository: ${{ github.repository }}
-            Commit Message: ${{ github.event.head_commit.message }}
-            
-            Please log into your remote Cloudflare or GitHub CLI environment to review logs.
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: topshelfwebsites
+          directory: .
