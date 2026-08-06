@@ -12,16 +12,28 @@
         .btn { display: block; background-color: #21262d; color: #58a6ff; text-decoration: none; padding: 14px; margin: 10px 0; border-radius: 6px; border: 1px solid #30363d; font-weight: bold; transition: all 0.2s ease; text-align: center; }
         .btn:hover { background-color: #1f6feb; color: #ffffff; border-color: #85b8ff; }
         .billing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .model-tag { display: inline-block; background-color: #21262d; color: #8b949e; font-size: 11px; padding: 4px 8px; margin: 3px; border-radius: 4px; border: 1px solid #30363d; }
+        .cluster-box { text-align: left; background-color: #0d1117; padding: 10px; border-radius: 6px; border: 1px solid #21262d; margin-top: 10px; }
         .footer { font-size: 11px; color: #8b949e; margin-top: 25px; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>OmniRoute Control Center</h1>
+        
         <h2>Core Gateway</h2>
-        <a href="https://omniroute.yourdomain.com" target="_blank" class="btn">🚀 OmniRoute Proxy Gateway</a>
-        <a href="https://status.yourdomain.com" target="_blank" class="btn">📊 Live Host Diagnostics</a>
-        <a href="https://one.dash.cloudflare.com" target="_blank" class="btn">☁️ Cloudflare Zero Trust Panel</a>
+        <a href="https://yourdomain.com" target="_blank" class="btn">🚀 OmniRoute Proxy Gateway</a>
+        <a href="https://yourdomain.com" target="_blank" class="btn">📊 Live Host Diagnostics</a>
+        <a href="https://cloudflare.com" target="_blank" class="btn">☁️ Cloudflare Zero Trust Panel</a>
+        
+        <h2>Active Free Cluster Pools</h2>
+        <div class="cluster-box">
+            <span class="model-tag">⚡ Gemini 2.0 Flash</span>
+            <span class="model-tag">🦙 Llama 3.3 70B</span>
+            <span class="model-tag">☯️ DeepSeek R1</span>
+            <span class="model-tag">🤖 Qwen 2.5 72B</span>
+        </div>
+
         <h2>API Billing Trackers</h2>
         <div class="billing-grid">
             <a href="https://openai.com" target="_blank" class="btn">🟢 OpenAI Usage</a>
@@ -29,6 +41,7 @@
             <a href="https://openrouter.ai" target="_blank" class="btn">🔵 OpenRouter Credit</a>
             <a href="https://google.com" target="_blank" class="btn">🟡 Google AI Studio</a>
         </div>
+        
         <div class="footer">🔒 Secured 24/7 • Deployed via Cloudflare Pages</div>
     </div>
 </body>
