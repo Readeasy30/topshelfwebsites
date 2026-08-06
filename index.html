@@ -5,21 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OmniRoute Control Center</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #0d1117; color: #c9d1d9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .container { text-align: center; background-color: #161b22; padding: 30px; border-radius: 12px; border: 1px solid #30363d; box-shadow: 0 8px 24px rgba(0,0,0,0.5); max-width: 400px; width: 100%; }
-        h1 { color: #f0f6fc; margin-bottom: 25px; font-size: 24px; }
-        .btn { display: block; background-color: #21262d; color: #58a6ff; text-decoration: none; padding: 14px; margin: 12px 0; border-radius: 6px; border: 1px solid #30363d; font-weight: bold; transition: all 0.2s ease; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #0d1117; color: #c9d1d9; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
+        .container { text-align: center; background-color: #161b22; padding: 30px; border-radius: 12px; border: 1px solid #30363d; box-shadow: 0 8px 24px rgba(0,0,0,0.5); max-width: 440px; width: 100%; }
+        h1 { color: #f0f6fc; margin-bottom: 20px; font-size: 24px; }
+        h2 { color: #8b949e; margin: 20px 0 10px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #21262d; padding-bottom: 5px; text-align: left; }
+        .btn { display: block; background-color: #21262d; color: #58a6ff; text-decoration: none; padding: 14px; margin: 10px 0; border-radius: 6px; border: 1px solid #30363d; font-weight: bold; transition: all 0.2s ease; text-align: center; }
         .btn:hover { background-color: #1f6feb; color: #ffffff; border-color: #85b8ff; }
+        .billing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .footer { font-size: 11px; color: #8b949e; margin-top: 25px; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>OmniRoute Control Center</h1>
-        <a href="https://yourdomain.com" target="_blank" class="btn">🚀 OmniRoute Proxy Gateway</a>
-        <a href="https://yourdomain.com" target="_blank" class="btn">📊 Live Host Diagnostics</a>
-        <a href="https://cloudflare.com" target="_blank" class="btn">☁️ Cloudflare Zero Trust Panel</a>
-        <div class="footer">🔒 Secured 24/7 via Cloudflare Edge Network</div>
+        <h2>Core Gateway</h2>
+        <a href="https://omniroute.yourdomain.com" target="_blank" class="btn">🚀 OmniRoute Proxy Gateway</a>
+        <a href="https://status.yourdomain.com" target="_blank" class="btn">📊 Live Host Diagnostics</a>
+        <a href="https://one.dash.cloudflare.com" target="_blank" class="btn">☁️ Cloudflare Zero Trust Panel</a>
+        <h2>API Billing Trackers</h2>
+        <div class="billing-grid">
+            <a href="https://openai.com" target="_blank" class="btn">🟢 OpenAI Usage</a>
+            <a href="https://anthropic.com" target="_blank" class="btn">🟠 Anthropic Balance</a>
+            <a href="https://openrouter.ai" target="_blank" class="btn">🔵 OpenRouter Credit</a>
+            <a href="https://google.com" target="_blank" class="btn">🟡 Google AI Studio</a>
+        </div>
+        <div class="footer">🔒 Secured 24/7 • Deployed via Cloudflare Pages</div>
     </div>
 </body>
 </html>
