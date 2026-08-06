@@ -128,3 +128,6 @@ env/
 
 # Docker
 .docker/
+
+docker-compose.yml
+Dockerfile
