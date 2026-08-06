@@ -1,5 +1,5 @@
 ﻿{
-  "routing_tier": "24_7_high_concurrency_v2",
+  "routing_tier": "24_7_high_concurrency_v3_free_expanded",
   "last_updated": "2026-08-06",
   "priorities": {
     "auto/best-coding": {
@@ -7,8 +7,13 @@
       "alternatives": ["anthropic/claude-3-5-haiku", "google/gemini-1.5-flash", "deepseek/deepseek-chat"]
     },
     "auto/free-token-pools": {
-      "primary": "meta-llama/llama-3.3-70b-instruct:free",
-      "alternatives": ["google/gemini-2.0-flash-exp:free", "kimi/moonshot-v1"]
+      "primary": "google/gemini-2.0-flash-exp:free",
+      "alternatives": [
+        "meta-llama/llama-3.3-70b-instruct:free",
+        "qwen/qwen-2.5-72b-instruct:free",
+        "deepseek/deepseek-r1:free",
+        "meta-llama/llama-3.1-8b-instruct:free"
+      ]
     }
   },
   "global_settings": {
@@ -21,8 +26,8 @@
     },
     "failover_rules": {
       "sub_second_cascade": true,
-      "max_retry_attempts": 4,
-      "cooldown_seconds_before_switch": 3
+      "max_retry_attempts": 5,
+      "cooldown_seconds_before_switch": 2
     }
   }
 }
