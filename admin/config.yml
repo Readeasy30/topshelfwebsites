@@ -1,0 +1,65 @@
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/YOUR_CLIENT_REPO_NAME
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "menu"
+    label: "Restaurant Menu Items"
+    folder: "data"
+    extension: "json"
+    create: true
+    slug: "menu-item-{{slug}}"
+    fields:
+      - {label: "Dish Name", name: "title", widget: "string"}
+      - {label: "Price", name: "price", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+
+  - name: "shop"
+    label: "Online Shop Catalog"
+    folder: "data"
+    extension: "json"
+    create: true
+    slug: "product-{{slug}}"
+    fields:
+      - {label: "Product Name", name: "title", widget: "string"}
+      - {label: "Price", name: "price", widget: "string"}
+      - {label: "Stock Status", name: "status", widget: "select", options: ["In Stock", "Low Stock", "Out of Stock"]}
+
+  - name: "inventory"
+    label: "Material Availability Ledger"
+    folder: "data"
+    extension: "json"
+    create: true
+    slug: "ledger-{{slug}}"
+    fields:
+      - {label: "Item Description", name: "name", widget: "string"}
+      - {label: "SKU / Code", name: "sku", widget: "string"}
+      - {label: "Available Stock (Units)", name: "count", widget: "string"}
+
+  - name: "news"
+    label: "Announcements & Updates"
+    folder: "data"
+    extension: "json"
+    create: true
+    slug: "news-{{slug}}"
+    fields:
+      - {label: "Publish Date", name: "date", widget: "string"}
+      - {label: "Headline Title", name: "title", widget: "string"}
+      - {label: "Announcement Content", name: "content", widget: "text"}
+
+  - name: "events"
+    label: "Special Events & Gathering Calendar"
+    folder: "data"
+    extension: "json"
+    create: true
+    slug: "event-{{slug}}"
+    fields:
+      - {label: "Event Type", name: "type", widget: "string"}
+      - {label: "Event Title", name: "title", widget: "string"}
+      - {label: "Event Description", name: "description", widget: "text"}
+      - {label: "Calendar Date", name: "date", widget: "string"}
+      - {label: "Event Time Frame", name: "time", widget: "string"}

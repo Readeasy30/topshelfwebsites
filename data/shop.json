@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Handcrafted Walnut Cutting Board",
+    "price": "$65.00",
+    "status": "In Stock"
+  },
+  {
+    "title": "Minimalist Leather Cardholder",
+    "price": "$38.00",
+    "status": "Low Stock"
+  },
+  {
+    "title": "Hand-Poured Soy Wax Candle",
+    "price": "$22.00",
+    "status": "Out of Stock"
+  }
+]

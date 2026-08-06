@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Events & Workshops</title>
+    <style>
+        /* Premium Minimalist Event Styles */
+        :root {
+            --bg: #0a0a0c;
+            --surface: #121216;
+            --border: #232329;
+            --text: #eaeaea;
+            --muted: #8a8a93;
+            --accent: #8b5cf6; /* Modern purple accent for event tracking */
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, sans-serif; }
+        body { background: var(--bg); color: var(--text); padding: 3rem 1rem; }
+        .container { max-width: 900px; margin: 0 auto; }
+        
+        header { text-align: center; margin-bottom: 4rem; }
+        h1 { font-size: 2.5rem; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+        .tagline { color: var(--muted); }
+        
+        /* Event Feed Grid */
+        #events-container { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+        
+        /* Event Cards */
+        .event-card { background: var(--surface); border: 1px solid var(--border); padding: 2rem; border-radius: 8px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .event-meta { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); font-weight: 600; }
+        .event-title { font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem; }
+        .event-details { color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+        .event-logistics { display: flex; gap: 1.5rem; font-size: 0.9rem; color: #fff; font-weight: 500; margin-top: 0.5rem; border-top: 1px solid var(--border); padding-top: 0.75rem; }
+        
+        .loading { text-align: center; color: var(--muted); padding: 3rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="events-title">Upcoming Gatherings</h1>
+            <p class="tagline">Join our interactive workshops, live tastings, and community pop-ups</p>
+        </header>
+
+        <!-- Dynamic events load directly right here -->
+        <main id="events-container">
+            <div class="loading">Loading calendar timeline...</div>
+        </main>
+    </div>
+
+    <!-- The Automatic Events Data Engine -->
+    <script>
+        async function loadLiveEvents() {
+            const container = document.getElementById('events-container');
+            try {
+                // Reads the matching JSON database structure inside your repository
+                const response = await fetch('/data/events.json');
+                if (!response.ok) throw new Error('Could not parse events file.');
+                const eventsData = await response.json();
+                
+                container.innerHTML = '';
+                
+                eventsData.forEach(event => {
+                    const eventElement = document.createElement('div');
+                    eventElement.className = 'event-card';
+                    eventElement.innerHTML = `
+                        <div class="event-meta">${event.type || 'Special Event'}</div>
+                        <h2 class="event-title">${event.title}</h2>
+                        <p class="event-details">${event.description}</p>
+                        <div class="event-logistics">
+                            <span>📅 ${event.date}</span>
+                            <span>⏰ ${event.time}</span>
+                        </div>
+                    `;
+                    container.appendChild(eventElement);
+                });
+            } catch (error) {
+                container.innerHTML = '<p class="loading">Event tracking is currently being updated. Check back soon!</p>';
+                console.error('Events data pull failed:', error);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', loadLiveEvents);
+    </script>
+</body>
+</html>

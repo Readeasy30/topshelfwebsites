@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services & Offerings</title>
+    <style>
+        /* Premium Minimalist Service Styles */
+        :root {
+            --bg: #0a0a0c;
+            --surface: #121216;
+            --border: #232329;
+            --text: #eaeaea;
+            --muted: #8a8a93;
+            --accent: #3b82f6;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, sans-serif; }
+        body { background: var(--bg); color: var(--text); padding: 3rem 1rem; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; }
+        
+        header { text-align: center; margin-bottom: 4rem; }
+        h1 { font-size: 2.5rem; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+        .tagline { color: var(--muted); }
+        
+        /* Grid Display for Services */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        
+        /* Service Display Cards */
+        .service-card { background: var(--surface); border: 1px solid var(--border); padding: 2rem; border-radius: 8px; display: flex; flex-direction: column; justify-content: space-between; }
+        .service-header h2 { font-size: 1.3rem; color: #fff; margin-bottom: 0.5rem; }
+        .service-price { font-size: 1.5rem; font-weight: 700; color: var(--accent); margin-bottom: 1rem; }
+        .service-features { list-style: none; margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+        .service-features li { font-size: 0.95rem; color: var(--muted); margin-bottom: 0.5rem; padding-left: 1.25rem; position: relative; }
+        .service-features li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="services-title">Our Services</h1>
+            <p class="tagline">Transparent commercial offerings built to fit your needs</p>
+        </header>
+
+        <main class="services-grid">
+            <!-- Service Package 1 -->
+            <div class="service-card">
+                <div class="service-header">
+                    <h2>Essential Care Package</h2>
+                    <div class="service-price">Starting at $99</div>
+                    <p>Perfect for local startups looking to establish their baseline market footprint quickly and professionally.</p>
+                </div>
+                <ul class="service-features">
+                    <li>Standard consultation layout</li>
+                    <li>Core project roadmap blueprint</li>
+                    <li>Basic operational execution block</li>
+                </ul>
+            </div>
+
+            <!-- Service Package 2 -->
+            <div class="service-card">
+                <div class="service-header">
+                    <h2>Premium Growth Suite</h2>
+                    <div class="service-price">Starting at $299</div>
+                    <p>Our flagship commercial offering designed for scaled operations requiring deep custom feature additions.</p>
+                </div>
+                <ul class="service-features">
+                    <li>Advanced configuration systems</li>
+                    <li>Priority maintenance priority</li>
+                    <li>Full operational optimization sweep</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

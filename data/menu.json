@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Signature Avocado Toast",
+    "price": "$14.50",
+    "description": "Toasted sourdough topped with smashed organic avocado, heirloom tomatoes, pickled radishes, and red pepper flakes."
+  },
+  {
+    "title": "Artisanal Brewed Coffee",
+    "price": "$4.25",
+    "description": "Locally roasted, single-origin medium roast coffee beans brewed fresh by the cup."
+  },
+  {
+    "title": "Truffle Garlic Fries",
+    "price": "$9.00",
+    "description": "Crispy golden cut potatoes tossed in aromatic white truffle oil, freshly grated parmesan cheese, and minced garlic."
+  }
+]

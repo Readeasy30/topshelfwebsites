@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shop</title>
+    <style>
+        /* Premium Minimalist Retail Styles */
+        :root {
+            --bg: #0a0a0c;
+            --surface: #121216;
+            --border: #232329;
+            --text: #eaeaea;
+            --muted: #8a8a93;
+            --accent: #3b82f6; /* Modern Blue accent for product details */
+            --alert: #ef4444;  /* Red accent for out of stock items */
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, sans-serif; }
+        body { background: var(--bg); color: var(--text); padding: 3rem 1rem; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        
+        header { text-align: center; margin-bottom: 4rem; }
+        h1 { font-size: 2.5rem; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+        .tagline { color: var(--muted); }
+        
+        /* Grid Display for Products */
+        #shop-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+        
+        /* Product Cards */
+        .product-card { background: var(--surface); border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px; display: flex; flex-direction: column; justify-content: space-between; }
+        .product-info { margin-top: 1rem; }
+        .product-title { font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: 0.5rem; }
+        .product-meta { display: flex; justify-content: space-between; align-items: center; }
+        .product-price { font-size: 1.2rem; font-weight: 700; color: var(--accent); }
+        .product-status { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.25rem 0.5rem; border-radius: 4px; background: rgba(255,255,255,0.05); }
+        .out-of-stock { color: var(--alert); }
+        .loading { text-align: center; color: var(--muted); padding: 2rem; grid-column: 1 / -1; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="shop-title">Handcrafted Collection</h1>
+            <p class="tagline">Built to last a lifetime with premium local materials</p>
+        </header>
+
+        <!-- Dynamic products load directly right here -->
+        <main id="shop-container">
+            <div class="loading">Loading our online store catalog...</div>
+        </main>
+    </div>
+
+    <!-- The Automatic Product Data Engine -->
+    <script>
+        async function loadLiveShop() {
+            const container = document.getElementById('shop-container');
+            try {
+                // Reads the matching JSON database structure inside your repository
+                const response = await fetch('/data/shop.json');
+                if (!response.ok) throw new Error('Could not parse shop file.');
+                const shopData = await response.json();
+                
+                container.innerHTML = '';
+                
+                shopData.forEach(product => {
+                    const isOut = product.status === "Out of Stock";
+                    const statusClass = isOut ? 'product-status out-of-stock' : 'product-status';
+                    
+                    const productElement = document.createElement('div');
+                    productElement.className = 'product-card';
+                    productElement.innerHTML = `
+                        <div class="product-info">
+                            <h2 class="product-title">${product.title}</h2>
+                        </div>
+                        <div class="product-meta">
+                            <span class="product-price">${product.price}</span>
+                            <span class="${statusClass}">${product.status || 'In Stock'}</span>
+                        </div>
+                    `;
+                    container.appendChild(productElement);
+                });
+            } catch (error) {
+                container.innerHTML = '<p class="loading">Store catalog is currently being updated. Check back soon!</p>';
+                console.error('Retail data pull failed:', error);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', loadLiveShop);
+    </script>
+</body>
+</html>

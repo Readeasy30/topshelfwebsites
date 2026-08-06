@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        /* Premium Minimalist Contact Styles */
+        :root {
+            --bg: #0a0a0c;
+            --surface: #121216;
+            --border: #232329;
+            --text: #eaeaea;
+            --muted: #8a8a93;
+            --accent: #3b82f6;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, sans-serif; }
+        body { background: var(--bg); color: var(--text); padding: 3rem 1rem; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; }
+        
+        header { text-align: center; margin-bottom: 4rem; }
+        h1 { font-size: 2.5rem; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+        .tagline { color: var(--muted); }
+        
+        /* Two-Column Layout for Info vs Form */
+        .contact-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+        @media(min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1.2fr; } }
+        
+        /* Info Block */
+        .info-sidebar { display: flex; flex-direction: column; gap: 2rem; }
+        .info-card h2 { font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .info-card p { color: var(--muted); font-size: 1rem; }
+        
+        /* Form Block */
+        form { background: var(--surface); border: 1px solid var(--border); padding: 2rem; border-radius: 8px; }
+        .form-group { margin-bottom: 1.5rem; }
+        label { display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: var(--muted); }
+        input, textarea { width: 100%; background: var(--bg); border: 1px solid var(--border); padding: 0.75rem; border-radius: 6px; color: #fff; font-size: 1rem; }
+        input:focus, textarea:focus { outline: none; border-color: var(--accent); }
+        button { background: var(--accent); color: #fff; border: none; padding: 1rem; border-radius: 6px; font-weight: 600; font-size: 1rem; cursor: pointer; width: 100%; }
+        button:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="contact-title">Connect With Us</h1>
+            <p class="tagline">Have a question or looking for a quote? Drop us a line below.</p>
+        </header>
+
+        <main class="contact-grid">
+            <!-- Business Logistics Column -->
+            <div class="info-sidebar">
+                <div class="info-card">
+                    <h2>Our Workshop</h2>
+                    <p>124 Craftsman Way, Studio B<br>Oakville, MO 63129</p>
+                </div>
+                <div class="info-card">
+                    <h2>Business Hours</h2>
+                    <p>Monday - Friday: 9:00 AM - 5:00 PM<br>Saturday: By Appointment Only</p>
+                </div>
+                <div class="info-card">
+                    <h2>Direct Lines</h2>
+                    <p>Email: hello@localbusiness.com<br>Phone: (555) 019-2834</p>
+                </div>
+            </div>
+
+            <!-- Client Message Capture Column -->
+            <div class="form-container">
+                <!-- Replace action URL with a free tool endpoint like Formspree or Web3Forms -->
+                <form action="https://formspree.io" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Describe your project or question in detail..."></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu</title>
+    <style>
+        /* Premium Minimalist Restaurant Styles */
+        :root {
+            --bg: #0d0d11;
+            --surface: #16161f;
+            --border: #262631;
+            --text: #f0f0f5;
+            --muted: #9494a1;
+            --accent: #d97706; /* Elegant Amber accent for food/dining */
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, sans-serif; }
+        body { background: var(--bg); color: var(--text); padding: 3rem 1rem; }
+        .container { max-width: 800px; margin: 0 auto; }
+        
+        /* Header styling */
+        header { text-align: center; margin-bottom: 4rem; }
+        h1 { font-size: 2.5rem; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+        .tagline { color: var(--muted); font-style: italic; }
+        
+        /* Interactive Menu Grid */
+        #menu-container { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        @media(min-width: 600px) { #menu-container { grid-template-columns: 1fr 1fr; } }
+        
+        /* Menu Cards */
+        .menu-item { background: var(--surface); border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px; display: flex; flex-direction: column; justify-content: space-between; }
+        .menu-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; }
+        .dish-name { font-size: 1.2rem; font-weight: 600; color: #fff; }
+        .dish-price { color: var(--accent); font-weight: 700; font-size: 1.1rem; }
+        .dish-desc { color: var(--muted); font-size: 0.95rem; }
+        
+        /* Error or Empty State text */
+        .loading { text-align: center; color: var(--muted); padding: 2rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="menu-title">Fresh Daily Selection</h1>
+            <p class="tagline">Handcrafted with premium local ingredients</p>
+        </header>
+
+        <!-- The automation script injects live items directly into this area -->
+        <main id="menu-container">
+            <div class="loading">Loading our latest items...</div>
+        </main>
+    </div>
+
+    <!-- The Automatic Data Engine Script -->
+    <script>
+        async function loadLiveMenu() {
+            const container = document.getElementById('menu-container');
+            try {
+                // Automatically reads the clean JSON file inside your GitHub repository
+                const response = await fetch('/data/menu.json');
+                if (!response.ok) throw new Error('Could not parse menu file.');
+                const menuData = await response.json();
+                
+                // Clear out the loading placeholder text
+                container.innerHTML = '';
+                
+                // Read every item dynamically and build a fast user layout card
+                menuData.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'menu-item';
+                    itemElement.innerHTML = `
+                        <div class="menu-header">
+                            <span class="dish-name">${item.title}</span>
+                            <span class="dish-price">${item.price}</span>
+                        </div>
+                        <p class="dish-desc">${item.description || ''}</p>
+                    `;
+                    container.appendChild(itemElement);
+                });
+            } catch (error) {
+                // Fallback UI helper if the client hasn't added any dishes yet
+                container.innerHTML = '<p class="loading">Menu is currently being updated. Check back soon!</p>';
+                console.error('Data pull failed:', error);
+            }
+        }
+
+        // Initialize the browser loop the exact millisecond the page loads
+        window.addEventListener('DOMContentLoaded', loadLiveMenu);
+    </script>
+</body>
+</html>
+

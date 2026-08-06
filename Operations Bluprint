@@ -1,0 +1,145 @@
+Agency Operations Blueprint: The 73-Hour Website FactoryThis master document details the automated, 100% free cloud architecture to build and deliver 9-page client websites within 73 hours using GitHub, Cloudflare Pages, and Decap CMS.1. Master Architecture & Directory StructureWhen you create your client boilerplate repository, layout your folders exactly like this. This clean, modular layout ensures Decap CMS can read your data files seamlessly.textagency-9page-boilerplate/Agency Operations Blueprint: The 73-Hour Website FactoryThis master document details the automated, 100% free cloud architecture to build and deliver 9-page client websites within 73 hours using GitHub, Cloudflare Pages, and Decap CMS.1. Master Architecture & Directory StructureWhen you create your client boilerplate repository, layout your folders exactly like this. This clean, modular layout ensures Decap CMS can read your data files seamlessly.textagency-9page-boilerplate/
+├── admin/
+│   ├── index.html        <-- Decap CMS login panel
+│   └── config.yml        <-- Controls what areas the client can edit
+├── css/
+│   └── style.css         <-- Core visual style sheet
+├── data/
+│   ├── menu.json         <-- Client's restaurant menu items
+│   └── inventory.json    <-- Client's shop products
+├── images/
+│   └── uploads/          <-- Client uploaded media saves here automatically
+├── index.html            <-- Page 1: Home (Fixed Core)
+├── about.html            <-- Page 2: About (Fixed Core)
+├── services.html         <-- Page 3: Services/Gallery (Fixed Core)
+├── contact.html          <-- Page 4: Contact (Fixed Core)
+├── menu-tool.html        <-- Page 5: Menu Builder (Client Tool Window)
+├── shop-tool.html        <-- Page 6: Online Shop (Client Tool Window)
+├── inventory-tool.html   <-- Page 7: Stock/Items (Client Tool Window)
+├── news-tool.html        <-- Page 8: Announcements (Client Tool Window)
+└── events-tool.html      <-- Page 9: Special Events (Client Tool Window)
+Use code with caution.2. The Core Automation Engines (Open Code Elements)A. The Master Client Dashboard (/admin/index.html)Paste this code directly into your /admin/index.html file. This pulls in the open-source Decap CMS script via a free browser network (CDN), creating an instant login window for the business owner.html<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Website Management Dashboard</title>
+  <!-- Pulls the open CMS script into the browser safely -->
+  <script src="https://unpkg.com@^3.0.0/dist/decap-cms.js"></script>
+</head>
+<body>
+  <!-- Decap CMS injects the editing tools automatically right here -->
+</body>
+</html>
+Use code with caution.B. The Automation Rules Engine (/admin/config.yml)This file tells the browser system exactly what parts of the 5 tool windows the client can change. It prevents them from breaking the core design while giving them full text control.yamlbackend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/YOUR_CLIENT_REPO_NAME
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "menu"
+    label: "Restaurant Menu Items"
+    folder: "data"
+    extension: "json"
+    create: true
+    slug: "menu-item-{{slug}}"
+    fields:
+      - {label: "Dish Name", name: "title", widget: "string"}
+      - {label: "Price", name: "price", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Food Image", name: "image", widget: "image"}
+
+  - name: "shop"
+    label: "Online Shop Inventory"
+    folder: "data"
+    extension: "json"
+    create: true
+    slug: "product-{{slug}}"
+    fields:
+      - {label: "Product Name", name: "title", widget: "string"}
+      - {label: "Price", name: "price", widget: "string"}
+      - {label: "Stock Status", name: "status", widget: "select", options: ["In Stock", "Low Stock", "Out of Stock"]}
+      - {label: "Product Image", name: "image", widget: "image"}
+Use code with caution.3. Automated 73-Hour Production Schedule  HOUR 0             HOUR 12               HOUR 36            HOUR 60          HOUR 73
+    │                  │                     │                  │                │
+    ▼                  ▼                     ▼                  ▼                ▼
+┌──────────────┐   ┌───────────────┐     ┌──────────────┐   ┌──────────────┐   ┌──────────────┐
+│ Fork Master  │   │ Tailor 4 Core │     │ Wire up CMS  │   │ Cloudflare   │   │ Handoff &    │
+│ Repo & Form  │   │ Static Pages  │     │ & Automation │   │ Domain Connect│   │ Start Sub   │
+└──────────────┘   └───────────────┘     └──────────────┘   └──────────────┘   └──────────────┘
+Hours 0 – 12: InitializationReceive $249.00 payment via your processing form.Log onto GitHub from any browser interface. Open your master template repository and click Fork to copy the clean codebase into a new repository named for the specific client.Generate a free API token via Cloudflare inside your account settings.Hours 12 – 36: Aesthetic Core AssemblyEdit index.html, about.html, services.html, and contact.html directly in the browser via GitHub's edit option.Swap in the client's localized copy, branding headlines, business hours, and operational contact information.Hours 36 – 60: System Hookup & Data BindingUpdate /admin/config.yml line 3 with the new client repository path so the automated editor knows exactly where to save updates.Embed the dynamic, client-facing display scripts onto your tool pages (e.g., pulling structural text directly out of /data/menu.json onto menu-tool.html).Hours 60 – 73: Cloudflare Global Network LaunchOpen the Cloudflare Pages browser console. Create a new dashboard project, select Connect to Git, and pick the client repository.Map their custom external business domain name using Cloudflare’s free DNS manager.Run an operational sweep: submit a contact form test, change a mock menu item via the admin panel, and ensure the live page auto-updates.Email the client their clean /admin panel access, activate their auto-billing $59.00 monthly subscription, and officially pass over control.4. Upsell Pricing MatrixKeep this reference chart handy for quick reference whenever clients ask for features beyond their 9 standard layout windows.Additional Feature FrameUpfront Configuration FeeMonthly Support ImpactAdditional Blank Tool Window+$45.00 / window+$0.00Custom Interactive Avatar Feature+$95.00 setup+$10.00 / monthAdvanced Payment/Inventory Tracker Integration+$120.00 engine build+$15.00 / monthUrgent Delivery Optimization (< 36 hours)+$150.00 rush priority+$0.00
+├── admin/
+│   ├── index.html        <-- Decap CMS login panel
+│   └── config.yml        <-- Controls what areas the client can edit
+├── css/
+│   └── style.css         <-- Core visual style sheet
+├── data/
+│   ├── menu.json         <-- Client's restaurant menu items
+│   └── inventory.json    <-- Client's shop products
+├── images/
+│   └── uploads/          <-- Client uploaded media saves here automatically
+├── index.html            <-- Page 1: Home (Fixed Core)
+├── about.html            <-- Page 2: About (Fixed Core)
+├── services.html         <-- Page 3: Services/Gallery (Fixed Core)
+├── contact.html          <-- Page 4: Contact (Fixed Core)
+├── menu-tool.html        <-- Page 5: Menu Builder (Client Tool Window)
+├── shop-tool.html        <-- Page 6: Online Shop (Client Tool Window)
+├── inventory-tool.html   <-- Page 7: Stock/Items (Client Tool Window)
+├── news-tool.html        <-- Page 8: Announcements (Client Tool Window)
+└── events-tool.html      <-- Page 9: Special Events (Client Tool Window)
+Use code with caution.2. The Core Automation Engines (Open Code Elements)A. The Master Client Dashboard (/admin/index.html)Paste this code directly into your /admin/index.html file. This pulls in the open-source Decap CMS script via a free browser network (CDN), creating an instant login window for the business owner.html<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Website Management Dashboard</title>
+  <!-- Pulls the open CMS script into the browser safely -->
+  <script src="https://unpkg.com@^3.0.0/dist/decap-cms.js"></script>
+</head>
+<body>
+  <!-- Decap CMS injects the editing tools automatically right here -->
+</body>
+</html>
+Use code with caution.B. The Automation Rules Engine (/admin/config.yml)This file tells the browser system exactly what parts of the 5 tool windows the client can change. It prevents them from breaking the core design while giving them full text control.yamlbackend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/YOUR_CLIENT_REPO_NAME
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "menu"
+    label: "Restaurant Menu Items"
+    folder: "data"
+    extension: "json"
+    create: true
+    slug: "menu-item-{{slug}}"
+    fields:
+      - {label: "Dish Name", name: "title", widget: "string"}
+      - {label: "Price", name: "price", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Food Image", name: "image", widget: "image"}
+
+  - name: "shop"
+    label: "Online Shop Inventory"
+    folder: "data"
+    extension: "json"
+    create: true
+    slug: "product-{{slug}}"
+    fields:
+      - {label: "Product Name", name: "title", widget: "string"}
+      - {label: "Price", name: "price", widget: "string"}
+      - {label: "Stock Status", name: "status", widget: "select", options: ["In Stock", "Low Stock", "Out of Stock"]}
+      - {label: "Product Image", name: "image", widget: "image"}
+Use code with caution.3. Automated 73-Hour Production Schedule  HOUR 0             HOUR 12               HOUR 36            HOUR 60          HOUR 73
+    │                  │                     │                  │                │
+    ▼                  ▼                     ▼                  ▼                ▼
+┌──────────────┐   ┌───────────────┐     ┌──────────────┐   ┌──────────────┐   ┌──────────────┐
+│ Fork Master  │   │ Tailor 4 Core │     │ Wire up CMS  │   │ Cloudflare   │   │ Handoff &    │
+│ Repo & Form  │   │ Static Pages  │     │ & Automation │   │ Domain Connect│   │ Start Sub   │
+└──────────────┘   └───────────────┘     └──────────────┘   └──────────────┘   └──────────────┘
+Hours 0 – 12: InitializationReceive $249.00 payment via your processing form.Log onto GitHub from any browser interface. Open your master template repository and click Fork to copy the clean codebase into a new repository named for the specific client.Generate a free API token via Cloudflare inside your account settings.Hours 12 – 36: Aesthetic Core AssemblyEdit index.html, about.html, services.html, and contact.html directly in the browser via GitHub's edit option.Swap in the client's localized copy, branding headlines, business hours, and operational contact information.Hours 36 – 60: System Hookup & Data BindingUpdate /admin/config.yml line 3 with the new client repository path so the automated editor knows exactly where to save updates.Embed the dynamic, client-facing display scripts onto your tool pages (e.g., pulling structural text directly out of /data/menu.json onto menu-tool.html).Hours 60 – 73: Cloudflare Global Network LaunchOpen the Cloudflare Pages browser console. Create a new dashboard project, select Connect to Git, and pick the client repository.Map their custom external business domain name using Cloudflare’s free DNS manager.Run an operational sweep: submit a contact form test, change a mock menu item via the admin panel, and ensure the live page auto-updates.Email the client their clean /admin panel access, activate their auto-billing $59.00 monthly subscription, and officially pass over control.4. Upsell Pricing MatrixKeep this reference chart handy for quick reference whenever clients ask for features beyond their 9 standard layout windows.Additional Feature FrameUpfront Configuration FeeMonthly Support ImpactAdditional Blank Tool Window+$45.00 / window+$0.00Custom Interactive Avatar Feature+$95.00 setup+$10.00 / monthAdvanced Payment/Inventory Tracker Integration+$120.00 engine build+$15.00 / monthUrgent Delivery Optimization (< 36 hours)+$150.00 rush priority+$0.00

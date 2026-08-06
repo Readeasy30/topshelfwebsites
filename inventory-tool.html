@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Stock Inventory</title>
+    <style>
+        /* Premium Minimalist Operational Styles */
+        :root {
+            --bg: #0a0a0c;
+            --surface: #121216;
+            --border: #232329;
+            --text: #eaeaea;
+            --muted: #8a8a93;
+            --accent: #10b981; /* Clean green accent for tracking stock numbers */
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, sans-serif; }
+        body { background: var(--bg); color: var(--text); padding: 3rem 1rem; }
+        .container { max-width: 900px; margin: 0 auto; }
+        
+        header { text-align: center; margin-bottom: 4rem; }
+        h1 { font-size: 2.5rem; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+        .tagline { color: var(--muted); }
+        
+        /* Table Layout for Organized Tracking */
+        .table-wrapper { width: 100%; overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th, td { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); }
+        th { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); background: rgba(255,255,255,0.02); }
+        td { font-size: 1rem; color: #fff; }
+        td.item-count { font-weight: 700; color: var(--accent); }
+        td.item-sku { font-family: monospace; color: var(--muted); }
+        
+        .loading { text-align: center; color: var(--muted); padding: 3rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="inventory-title">Material & Product Availability</h1>
+            <p class="tagline">Real-time stock indicators directly from our local workshop</p>
+        </header>
+
+        <main class="table-wrapper">
+            <table id="inventory-table">
+                <thead>
+                    <tr>
+                        <th>Item Description</th>
+                        <th>SKU / Code</th>
+                        <th>Available Stock</th>
+                    </tr>
+                </thead>
+                <tbody id="inventory-body">
+                    <tr>
+                        <td colspan="3" class="loading">Loading current ledger updates...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+
+    <!-- The Automatic Inventory Data Engine -->
+    <script>
+        async function loadLiveInventory() {
+            const tbody = document.getElementById('inventory-body');
+            try {
+                // Reads the matching JSON database structure inside your repository
+                const response = await fetch('/data/inventory.json');
+                if (!response.ok) throw new Error('Could not parse inventory file.');
+                const inventoryData = await response.json();
+                
+                tbody.innerHTML = '';
+                
+                inventoryData.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td><strong>${item.name}</strong></td>
+                        <td class="item-sku">${item.sku || 'N/A'}</td>
+                        <td class="item-count">${item.count} units</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            } catch (error) {
+                tbody.innerHTML = '<tr><td colspan="3" class="loading">Inventory ledger is currently being updated. Check back soon!</td></tr>';
+                console.error('Inventory data pull failed:', error);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', loadLiveInventory);
+    </script>
+</body>
+</html>

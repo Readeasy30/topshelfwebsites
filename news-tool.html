@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcements & Updates</title>
+    <style>
+        /* Premium Minimalist Blog Styles */
+        :root {
+            --bg: #0a0a0c;
+            --surface: #121216;
+            --border: #232329;
+            --text: #eaeaea;
+            --muted: #8a8a93;
+            --accent: #f59e0b; /* Warm amber accent for headlines */
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, sans-serif; }
+        body { background: var(--bg); color: var(--text); padding: 3rem 1rem; }
+        .container { max-width: 800px; margin: 0 auto; }
+        
+        header { text-align: center; margin-bottom: 4rem; }
+        h1 { font-size: 2.5rem; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+        .tagline { color: var(--muted); }
+        
+        /* Layout for News Timeline */
+        #news-container { display: flex; flex-direction: column; gap: 2.5rem; }
+        
+        /* Article Blocks */
+        .news-post { background: var(--surface); border: 1px solid var(--border); padding: 2rem; border-radius: 8px; }
+        .news-date { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.5rem; font-weight: 600; }
+        .news-title { font-size: 1.5rem; color: #fff; margin-bottom: 1rem; }
+        .news-content { color: var(--text); line-height: 1.7; }
+        
+        .loading { text-align: center; color: var(--muted); padding: 3rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="news-title">Latest Announcements</h1>
+            <p class="tagline">Stay updated with our newest products, holiday hours, and local news</p>
+        </header>
+
+        <!-- Dynamic news posts load directly right here -->
+        <main id="news-container">
+            <div class="loading">Fetching latest dispatches...</div>
+        </main>
+    </div>
+
+    <!-- The Automatic News Data Engine -->
+    <script>
+        async function loadLiveNews() {
+            const container = document.getElementById('news-container');
+            try {
+                // Reads the matching JSON database structure inside your repository
+                const response = await fetch('/data/news.json');
+                if (!response.ok) throw new Error('Could not parse news file.');
+                const newsData = await response.json();
+                
+                container.innerHTML = '';
+                
+                newsData.forEach(post => {
+                    const postElement = document.createElement('article');
+                    postElement.className = 'news-post';
+                    postElement.innerHTML = `
+                        <div class="news-date">${post.date}</div>
+                        <h2 class="news-title">${post.title}</h2>
+                        <div class="news-content"><p>${post.content}</p></div>
+                    `;
+                    container.appendChild(postElement);
+                });
+            } catch (error) {
+                container.innerHTML = '<p class="loading">Announcements ledger is currently being updated. Check back soon!</p>';
+                console.error('News data pull failed:', error);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', loadLiveNews);
+    </script>
+</body>
+</html>
