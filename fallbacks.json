@@ -1,23 +1,28 @@
 ﻿{
-  "routing_tier": "24_7_automation_v1",
+  "routing_tier": "24_7_high_concurrency_v2",
   "last_updated": "2026-08-06",
   "priorities": {
-    "tier_1_fast": {
+    "auto/best-coding": {
       "primary": "openai/gpt-4o-mini",
-      "alternatives": ["anthropic/claude-3-5-haiku", "google/gemini-1.5-flash"]
+      "alternatives": ["anthropic/claude-3-5-haiku", "google/gemini-1.5-flash", "deepseek/deepseek-chat"]
     },
-    "tier_2_reasoning": {
-      "primary": "openai/o1-mini",
-      "alternatives": ["anthropic/claude-3-5-sonnet", "deepseek/deepseek-reasoner"]
-    },
-    "tier_3_free_token_pools": {
+    "auto/free-token-pools": {
       "primary": "meta-llama/llama-3.3-70b-instruct:free",
-      "alternatives": ["google/gemini-2.0-flash-exp:free"]
+      "alternatives": ["google/gemini-2.0-flash-exp:free", "kimi/moonshot-v1"]
     }
   },
-  "failover_rules": {
-    "max_retry_attempts": 3,
-    "cooldown_seconds_before_switch": 5,
-    "automatic_circuit_breaker_trip": true
+  "global_settings": {
+    "max_concurrent_requests": 32,
+    "request_queuing_enabled": true,
+    "compression_pipeline": {
+      "enabled": true,
+      "engines": ["rtk", "caveman"],
+      "target_reduction_pct": 85
+    },
+    "failover_rules": {
+      "sub_second_cascade": true,
+      "max_retry_attempts": 4,
+      "cooldown_seconds_before_switch": 3
+    }
   }
 }
