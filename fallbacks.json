@@ -1,0 +1,23 @@
+﻿{
+  "routing_tier": "24_7_automation_v1",
+  "last_updated": "2026-08-06",
+  "priorities": {
+    "tier_1_fast": {
+      "primary": "openai/gpt-4o-mini",
+      "alternatives": ["anthropic/claude-3-5-haiku", "google/gemini-1.5-flash"]
+    },
+    "tier_2_reasoning": {
+      "primary": "openai/o1-mini",
+      "alternatives": ["anthropic/claude-3-5-sonnet", "deepseek/deepseek-reasoner"]
+    },
+    "tier_3_free_token_pools": {
+      "primary": "meta-llama/llama-3.3-70b-instruct:free",
+      "alternatives": ["google/gemini-2.0-flash-exp:free"]
+    }
+  },
+  "failover_rules": {
+    "max_retry_attempts": 3,
+    "cooldown_seconds_before_switch": 5,
+    "automatic_circuit_breaker_trip": true
+  }
+}
