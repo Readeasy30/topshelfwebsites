@@ -1,0 +1,40 @@
+﻿body {
+font-family: Arial, sans-serif;
+max-width:1000px;
+margin:auto;
+padding:40px;
+line-height:1.6;
+background:#111;
+color:white;
+}
+
+h1 {font-size:3rem;}
+
+.button, button {
+background:#2563eb;
+color:white;
+padding:15px 25px;
+border-radius:8px;
+text-decoration:none;
+border:0;
+cursor:pointer;
+}
+
+.grid {
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.grid div {
+padding:25px;
+background:#222;
+border-radius:10px;
+}
+
+input {
+display:block;
+margin:10px 0;
+padding:12px;
+width:100%;
+}
