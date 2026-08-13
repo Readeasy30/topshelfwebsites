@@ -1,1 +1,18 @@
-name: Deploy Top Shelf Websites`non:`n  push:`n    branches:`n      - main`njobs:`n  deploy:`n    runs-on: ubuntu-latest`n    steps:`n      - name: Checkout`n        uses: actions/checkout@v4`n      - name: Deploy to Cloudflare Pages`n        uses: cloudflare/pages-action@v1`n        with:`n          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}`n          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}`n          projectName: topshelfwebsites
+name: Deploy Top Shelf Websites
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: topshelfwebsites
+          directory: .
