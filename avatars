@@ -1,0 +1,9 @@
+└── avatars/
+    executive
+    ├── README.md
+    ├── AVATAR-SPEC.md
+    ├── avatar-config.json
+    ├── knowledge/
+    ├── prompts/
+    ├── assets/
+    └── demo/

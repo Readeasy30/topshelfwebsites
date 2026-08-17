@@ -1,18 +1,17 @@
-﻿name: Deploy Top Shelf Websites
-
+name: Deploy Top Shelf Websites
 on:
   push:
     branches:
       - main
-
+permissions:
+  contents: write
+  deployments: write
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
