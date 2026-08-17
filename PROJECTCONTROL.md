@@ -1,112 +1,73 @@
 ﻿# TOP SHELF WEBSITES — PROJECT CONTROL
 
-## CURRENT BUILD
-Project: Top Shelf Executive Avatar
-Status: WORKING
-Priority: HIGH
-Current Avatar Slot: avatars/01-top-shelf/
+## CURRENT STATUS
+WORKING
 
-## OBJECTIVE
-Build a professional, knowledgeable, usable executive AI avatar named
-Top Shelf for the Top Shelf Websites business.
+## PRIMARY PROJECT
+Finish the Top Shelf Websites leasing website.
 
-Top Shelf will:
-- Sell leased websites
-- Explain website plans
-- Qualify prospects
-- Recommend appropriate plans
-- Answer business and website questions
-- Help manage leased websites
-- Become the prototype for additional customer website avatars
+## CURRENT BUILD ORDER
+1. Finish Top Shelf website
+2. Continue Executive Avatar
+3. Integrate avatar
+4. Test desktop and mobile
+5. Launch website
+6. Review and make adjustments
+7. Begin marketing
 
-## AVATAR PROFILE
-Name: Top Shelf
-Gender: Male
-Age appearance: 50s
-Complexion: White/light tan
-Nationality/style: American
-Appearance: Handsome, credible, professional
-Personality: Knowledgeable, direct, patient, hands-on business owner
-Voice: American
+## CURRENT BUSINESS MODEL
+Website leasing/rental business.
 
-## AVATAR LIBRARY
-avatars/
-  01-top-shelf/          = CURRENT BUILD
-  02-sales-advisor/      = RESERVED
-  03-website-manager/    = RESERVED
-  04-customer-assistant/ = RESERVED
+START — /month
+GROW — /month
+PRO — /month
 
-Additional avatars will be created after Avatar 01 is proven.
+## RECOVERY / CHECKPOINT RULE
+Top off this file frequently.
 
-## REQUIRED BUILD
-1. Create avatar
-2. Add voice
-3. Add Top Shelf business knowledge
-4. Add sales behavior
-5. Add website-management knowledge
-6. Make avatar conversational
-7. Integrate into topshelfwebsites.com
-8. Test
-9. Save all work
-10. Commit and push to GitHub
-11. Verify the saved checkpoint
+Before stopping, shutdown, interruption, or handoff:
+- Record what was completed.
+- Record what is currently being built.
+- Record the exact next step.
+- Record blockers.
+- Record latest commit/checkpoint.
+- Record avatar status.
+- Record website status.
 
-## SOURCE OF TRUTH
-Repository:
-Readeasy30/topshelfwebsites
-
-Branch:
-main
-
-Local path:
-C:\Users\Wholelychit\topshelfwebsites
-
-Git workflow:
-READ
-→ EDIT
+## GITHUB WRITE PATH
+PowerShell
+→ C:\Users\Wholelychit\topshelfwebsites
+→ GitHub account: Readeasy30
+→ Readeasy30/topshelfwebsites
+→ main
+→ READ files/history
+→ WRITE files
 → git add
 → git commit
 → git push origin main
-→ VERIFY
 
-## PROTECTION RULES
+## SAFETY RULES
 - Never force-push.
-- Never reset another builder's work.
-- Never overwrite another active builder's files.
-- Check Git status/history before making major changes.
-- Save important work before stopping.
-- Create checkpoints at meaningful milestones.
+- Never overwrite another builder's work.
+- Pull/fetch before modifying when necessary.
+- Preserve existing production work.
+- Do not claim unfinished work is complete.
+- Website first. Marketing after launch.
 
-## GITHUB ACCESS
-PowerShell GitHub access has been verified as working.
+## IMPORTANT RECOVERED FILES
+- build-handoff.md
+- avatars/
+- index.html
+- README.md
+- Operations Bluprint
 
-ChatGPT GitHub connector:
-READ works.
-WRITE may return HTTP 403.
-
-If ChatGPT connector write fails, use the verified PowerShell/Git workflow.
+## RETIRED MODEL
+The old 73-hour / 9-page /  model is obsolete.
+Do not restore it.
 
 ## CURRENT CHECKPOINT
-Top Shelf Executive is defined and the permanent avatar location is:
+Status: WORKING
+Next action: Continue Top Shelf website build.
 
-avatars/01-top-shelf/
-
-Next objective:
-Create the actual usable chatting avatar and preserve every milestone in GitHub.
-
-## STATUS RULE
-Post:
-WORKING when actively building.
-STOPPED when no active build work.
-BLOCKED when waiting for access, tools, or required input.
-
-## HANDOFF
-Any future builder/ChatGPT session should read this file first,
-then inspect:
-- avatars/
-- git status
-- git log
-- recent commits
-
-Do not assume lost conversation context is the source of truth.
-GitHub is the source of truth.
+## LAST UPDATED
+2026-08-16 23:42:59 -05:00
