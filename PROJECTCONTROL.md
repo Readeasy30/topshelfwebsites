@@ -18,9 +18,9 @@ Finish the Top Shelf Websites leasing website.
 ## CURRENT BUSINESS MODEL
 Website leasing/rental business.
 
-START — /month
-GROW — /month
-PRO — /month
+- START — $59/month
+- GROW — $99/month
+- PRO — $149/month
 
 ## RECOVERY / CHECKPOINT RULE
 Top off this file frequently.
@@ -30,9 +30,10 @@ Before stopping, shutdown, interruption, or handoff:
 - Record what is currently being built.
 - Record the exact next step.
 - Record blockers.
-- Record latest commit/checkpoint.
 - Record avatar status.
 - Record website status.
+- Record the latest commit/checkpoint.
+- Update the LAST UPDATED timestamp.
 
 ## GITHUB WRITE PATH
 PowerShell
@@ -47,14 +48,14 @@ PowerShell
 → git push origin main
 
 ## CURRENT CHECKPOINT
-* **Status:** WORKING (Live Tweak Night Active)
-* **Completed Tonight:** Created 11-file onboarding framework inside `marketing/` directory via PowerShell backdoor.
-* **Currently Building:** Aligning local directory pathways on Beelink hardware.
-* **Exact Next Step:** Run a clean system pull to sync the workspace branch.
-* **Blockers:** None. Local folder paths successfully corrected.
-* **Avatar Status:** Avatar Sales Director #2 is online, tracking, and integrated.
-* **Website Status:** Index.html exists and is stable.
-* **Latest Checkpoint Time:** 2026-08-17 23:45:00 -05:00
+- **Status:** WORKING
+- **Completed:** Created the 11-file onboarding framework inside `marketing/`.
+- **Currently Building:** Aligning local directory pathways on Beelink hardware.
+- **Exact Next Step:** Run a clean system pull to synchronize the workspace branch.
+- **Blockers:** None.
+- **Avatar Status:** Avatar Sales Director #2 is reported online, tracking, and integrated.
+- **Website Status:** `index.html` exists and is stable.
+- **Checkpoint Time:** 2026-08-17 23:45:00 -05:00
 
 ## SAFETY RULES
 - Never force-push.
@@ -65,19 +66,15 @@ PowerShell
 - Website first. Marketing after launch.
 
 ## IMPORTANT RECOVERED FILES
-- build-handoff.md
-- avatars/
-- index.html
-- README.md
-- Operations Bluprint
+- `build-handoff.md`
+- `avatars/`
+- `index.html`
+- `README.md`
+- `Operations Bluprint`
 
 ## RETIRED MODEL
-The old 73-hour / 9-page /  model is obsolete.
+The old 73-hour / 9-page model is obsolete.
 Do not restore it.
 
-## CURRENT CHECKPOINT
-Status: WORKING
-Next action: Continue Top Shelf website build.
-
 ## LAST UPDATED
-2026-08-16 23:42:59 -05:00
+2026-08-18 07:05:20 -05:00
