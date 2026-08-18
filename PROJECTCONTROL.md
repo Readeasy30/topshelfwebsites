@@ -46,6 +46,16 @@ PowerShell
 → git commit
 → git push origin main
 
+## CURRENT CHECKPOINT
+* **Status:** WORKING (Live Tweak Night Active)
+* **Completed Tonight:** Created 11-file onboarding framework inside `marketing/` directory via PowerShell backdoor.
+* **Currently Building:** Aligning local directory pathways on Beelink hardware.
+* **Exact Next Step:** Run a clean system pull to sync the workspace branch.
+* **Blockers:** None. Local folder paths successfully corrected.
+* **Avatar Status:** Avatar Sales Director #2 is online, tracking, and integrated.
+* **Website Status:** Index.html exists and is stable.
+* **Latest Checkpoint Time:** 2026-08-17 23:45:00 -05:00
+
 ## SAFETY RULES
 - Never force-push.
 - Never overwrite another builder's work.
