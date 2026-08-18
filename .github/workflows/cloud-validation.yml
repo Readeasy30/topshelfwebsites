@@ -1,0 +1,42 @@
+﻿name: Top Shelf Cloud Validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify required files
+        shell: bash
+        run: |
+          test -f index.html
+          test -f PROJECTCONTROL.md
+          test -f CNAME
+
+      - name: Verify static site
+        shell: bash
+        run: |
+          grep -qi "<html" index.html
+          grep -qi "</html>" index.html
+
+      - name: Verify lease pricing
+        shell: bash
+        run: |
+          grep -q '\$59/month' PROJECTCONTROL.md
+          grep -q '\$99/month' PROJECTCONTROL.md
+          grep -q '\$149/month' PROJECTCONTROL.md
+
+      - name: Verify no Node build requirement
+        shell: bash
+        run: |
+          test ! -f package.json

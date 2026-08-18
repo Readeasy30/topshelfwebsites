@@ -1,0 +1,13 @@
+﻿{
+  "name": "Top Shelf Websites",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "files.eol": "\n"
+      }
+    }
+  },
+  "postCreateCommand": "git status --short",
+  "remoteUser": "vscode"
+}
